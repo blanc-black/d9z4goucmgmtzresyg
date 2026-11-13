@@ -1,0 +1,4952 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2f6f5e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="방배정">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<title>세미나 방배정 보드 — 26년 11월 1박2일</title>
+<style>
+:root {
+  --bg: #f3efe7;
+  --bg-board: #ebe4d6;
+  --surface: #fffcf7;
+  --ink: #2b2925;
+  --muted: #6d675e;
+  --line: #e0d8cb;
+  --line-strong: #cfc5b4;
+  --accent: #2f6f5e;
+  --accent-soft: #e5f0eb;
+  --danger: #b42318;
+  --danger-bg: #fde8e6;
+  --danger-border: #f0b0aa;
+  --warn: #9a6700;
+  --warn-bg: #fff4d6;
+  --male: #2c5a86;
+  --male-bg: #e7f0f8;
+  --male-bd: #b8d0e4;
+  --female: #8a3358;
+  --female-bg: #f8e7ee;
+  --female-bd: #e4b8c8;
+  --banner: #8f1d1d;
+  --shadow: 0 1px 2px rgba(40,30,10,.06), 0 6px 16px rgba(40,30,10,.07);
+  --radius: 10px;
+  --font: "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+}
+button, input, select, textarea { font-family: inherit; font-size: 13px; }
+button { cursor: pointer; }
+.app { display: flex; flex-direction: column; height: 100%; }
+.banner {
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--banner);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  padding: 8px 16px;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(80,0,0,.25);
+  animation: bannerPulse 1.6s ease-in-out infinite;
+}
+.banner.visible { display: flex; }
+.banner .banner-icon { font-size: 20px; }
+@keyframes bannerPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.18); }
+}
+.header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  min-height: 52px;
+}
+.logo { font-size: 16px; font-weight: 800; white-space: nowrap; color: var(--ink); margin-right: 4px; }
+.logo span { color: var(--accent); }
+.tabs { display: flex; background: var(--bg); border-radius: 8px; padding: 3px; gap: 2px; }
+.tab {
+  border: 0; background: transparent; color: var(--muted);
+  padding: 6px 14px; border-radius: 6px; font-weight: 700;
+}
+.tab.active { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+.header-actions { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.btn {
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.btn:hover { background: #f7f3ec; }
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { filter: brightness(1.08); background: var(--accent); }
+.btn-danger { color: var(--danger); border-color: var(--danger-border); background: #fff; }
+.btn-sm { padding: 3px 8px; font-size: 12px; }
+.btn:disabled { opacity: .45; cursor: default; }
+.body { flex: 1; display: flex; min-height: 0; }
+.side {
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.side-left { width: 320px; flex: 0 0 320px; }
+.side-right { width: 268px; flex: 0 0 268px; border-right: 0; border-left: 1px solid var(--line); }
+.side-scroll { flex: 1; overflow: auto; padding: 10px 12px 16px; }
+.section { margin-bottom: 14px; }
+.section-h {
+  display: flex; align-items: center; justify-content: space-between;
+  font-weight: 800; font-size: 12px; letter-spacing: .02em;
+  color: var(--muted); margin: 0 0 8px;
+}
+.row { display: flex; gap: 6px; margin-bottom: 6px; }
+.row > * { flex: 1; min-width: 0; }
+label.field { display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: var(--muted); font-weight: 700; }
+input[type="text"], input[type="number"], input[type="search"], select, textarea {
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  padding: 6px 8px;
+  background: #fff;
+  color: var(--ink);
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid #b7d4c8; border-color: var(--accent); }
+.seg { display: flex; background: var(--bg); border-radius: 7px; padding: 2px; gap: 2px; }
+.seg button {
+  flex: 1; border: 0; background: transparent; border-radius: 5px;
+  padding: 5px 0; font-weight: 700; color: var(--muted);
+}
+.seg button.on { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.seg button.on.m { color: var(--male); }
+.seg button.on.f { color: var(--female); }
+.hint { font-size: 11px; color: var(--muted); margin: 4px 0 8px; }
+.deck-tools { display: flex; gap: 6px; margin-bottom: 8px; }
+.deck-tools input { flex: 1; }
+.filter-seg { flex: 1; min-width: 0; }
+.deck-groups { display: flex; flex-direction: column; gap: 8px; }
+.deck-group-h {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 800; color: var(--muted);
+  padding: 2px 0;
+}
+.deck-group-h .swatch { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; }
+.deck-group-h .n { font-weight: 600; }
+.deck-group .cards { display: flex; flex-direction: column; gap: 6px; }
+.deck {
+  background: repeating-linear-gradient(-45deg, #f7f3ec, #f7f3ec 8px, #f3eee5 8px, #f3eee5 16px);
+  border: 1px dashed var(--line-strong);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 160px;
+}
+.deck.drop-ok { border-color: var(--accent); background: var(--accent-soft); }
+.deck-empty { color: var(--muted); text-align: center; padding: 20px 8px; font-size: 12px; }
+.deck-count { font-weight: 600; color: var(--ink); font-size: 11px; }
+.card {
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 6px 8px 6px 10px;
+  box-shadow: 0 1px 2px rgba(40,30,10,.06);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 112px;
+  max-width: 180px;
+  border-left: 4px solid #999;
+}
+.card:hover { box-shadow: var(--shadow); }
+.card.dragging { opacity: .35; }
+.card.wrong-gender {
+  background: #fff3f2;
+  animation: cardWarn 1.2s ease-in-out infinite;
+}
+@keyframes cardWarn {
+  0%, 100% { box-shadow: 0 0 0 2px var(--danger), 0 0 6px rgba(180,35,24,.3); }
+  50% { box-shadow: 0 0 0 3px #ff4d3a, 0 0 14px rgba(180,35,24,.7); }
+}
+.card-name { font-size: 15px; font-weight: 800; line-height: 1.2; display: flex; align-items: center; gap: 6px; }
+.card-meta { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gender-badge {
+  font-size: 10px; font-weight: 800; border-radius: 4px;
+  padding: 1px 5px; margin-left: auto; flex: 0 0 auto;
+}
+.gender-badge.남 { background: var(--male-bg); color: var(--male); }
+.gender-badge.여 { background: var(--female-bg); color: var(--female); }
+.gender-badge.미정 { background: #e4e2de; color: #5a5752; }
+.gender-badge { cursor: pointer; }
+.gender-badge:hover { filter: brightness(.97); outline: 1px solid rgba(0,0,0,.12); }
+.card-ghost {
+  position: fixed; pointer-events: none; z-index: 200;
+  transform: rotate(-3deg) scale(1.04);
+  box-shadow: 0 8px 24px rgba(40,30,10,.2);
+  margin: 0;
+}
+.board-wrap {
+  flex: 1; min-width: 0; min-height: 0;
+  overflow: auto;
+  background:
+    radial-gradient(circle, rgba(80,60,30,.07) 1px, transparent 1.5px) 0 0 / 18px 18px,
+    var(--bg-board);
+  position: relative;
+}
+.board { position: relative; min-width: 1400px; min-height: 1100px; }
+.board-hint {
+  position: absolute; left: 16px; top: 12px;
+  color: #8a8276; font-size: 12px; pointer-events: none; z-index: 0;
+}
+.line-chips {
+  position: sticky; top: 0; z-index: 8;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 8px 12px;
+  background: linear-gradient(to bottom, rgba(243,239,231,.95), rgba(243,239,231,.8) 70%, transparent);
+}
+.line-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; border: 1px solid var(--line-strong);
+  border-left: 4px solid #999;
+  border-radius: 8px; padding: 5px 10px;
+  font-weight: 700; cursor: grab; touch-action: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  user-select: none;
+}
+.line-chip .n { font-size: 11px; color: var(--muted); font-weight: 600; }
+.line-chip.dragging { opacity: .4; }
+.room {
+  position: absolute;
+  background: var(--surface);
+  border: 2px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  min-width: 230px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+.room.gender-남 { background: #f5f9fc; border-color: var(--male-bd); }
+.room.gender-여 { background: #fdf6f8; border-color: var(--female-bd); }
+.room.over { border-color: var(--danger); }
+.room.mixed {
+  border-color: var(--danger);
+  border-width: 3px;
+  box-shadow: 0 0 0 3px rgba(180,35,24,.25), 0 0 18px rgba(180,35,24,.35);
+  animation: roomPulse 1.4s ease-in-out infinite;
+}
+.room.never { outline: 2px dashed var(--danger); outline-offset: 2px; }
+.room.drop-ok { outline: 3px solid var(--accent); outline-offset: 1px; }
+@keyframes roomPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(180,35,24,.2), 0 0 10px rgba(180,35,24,.25); }
+  50% { box-shadow: 0 0 0 5px rgba(180,35,24,.4), 0 0 22px rgba(180,35,24,.5); }
+}
+.room-head {
+  display: flex; align-items: flex-start; gap: 6px;
+  padding: 8px 8px 6px 10px;
+  cursor: grab; touch-action: none;
+  border-bottom: 1px solid var(--line);
+  user-select: none;
+}
+.room-title { font-weight: 800; font-size: 14px; flex: 1; min-width: 0; }
+.room-sub { font-size: 12px; color: var(--muted); font-weight: 600; }
+.room-count { font-weight: 800; font-size: 13px; white-space: nowrap; }
+.room-count.over { color: var(--danger); }
+.room-flags { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px 8px 0; }
+.flag { font-size: 11px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+.flag.mixed { background: var(--danger); color: #fff; }
+.flag.over { background: var(--danger-bg); color: var(--danger); }
+.flag.never { background: #3b0d0b; color: #fff; }
+.room-body {
+  padding: 8px;
+  display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start;
+  min-height: 86px;
+  flex: 1;
+}
+.room-body .card { max-width: calc(50% - 3px); flex: 1 1 100px; }
+.room-actions { display: flex; gap: 2px; }
+.icon-btn {
+  border: 0; background: transparent; color: var(--muted);
+  width: 22px; height: 22px; border-radius: 4px; padding: 0; font-size: 13px;
+}
+.icon-btn:hover { background: var(--bg); color: var(--ink); }
+.board > .card { position: absolute; z-index: 3; max-width: 160px; }
+.tree { font-size: 12px; }
+.tree-node { margin: 1px 0; }
+.tree-row { display: flex; align-items: center; gap: 4px; padding: 2px 0; }
+.tree-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; }
+.tree-kids { margin-left: 14px; border-left: 1px solid var(--line); padding-left: 8px; }
+.tree-name { font-weight: 700; }
+.tree-g { font-size: 10px; color: var(--muted); }
+.rule-list { display: flex; flex-direction: column; gap: 6px; }
+.rule-item {
+  background: var(--bg); border-radius: 8px; padding: 6px 8px;
+  display: flex; align-items: flex-start; gap: 6px; font-size: 12px;
+}
+.rule-item.never { background: var(--danger-bg); }
+.rule-item .rm { margin-left: auto; }
+.warn-panel { display: flex; flex-direction: column; gap: 6px; }
+.warn-item {
+  border-radius: 8px; padding: 7px 8px; font-size: 12px; font-weight: 600;
+  background: var(--warn-bg); color: #5c3d00; border: 1px solid #f0d78c;
+}
+.warn-item.bad { background: var(--danger-bg); color: var(--danger); border-color: var(--danger-border); }
+.warn-item.ok { background: var(--accent-soft); color: var(--accent); border-color: #c5ddd3; }
+.warn-empty { color: var(--muted); font-size: 12px; }
+.modal-back {
+  display: none; position: fixed; inset: 0; background: rgba(30,24,16,.4);
+  z-index: 100; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-back.show { display: flex; }
+.modal {
+  background: #fff; border-radius: 14px; width: min(560px, 100%);
+  max-height: min(86vh, 720px); display: flex; flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,.22);
+}
+.modal h3 { margin: 0; padding: 14px 16px 0; font-size: 16px; }
+.modal-body { padding: 12px 16px; overflow: auto; flex: 1; }
+.modal-actions { padding: 10px 16px 14px; display: flex; gap: 8px; justify-content: flex-end; }
+.modal textarea { min-height: 180px; width: 100%; resize: vertical; }
+@media print {
+  body { overflow: auto; background: #fff; font-size: 12px; }
+  .banner, .header-actions, .side-left, .side-right, .line-chips, .board-hint, .modal-back, .card-ghost { display: none !important; }
+  .header { border: 0; }
+  .body { display: block; overflow: visible; }
+  .board-wrap { overflow: visible; background: #fff; }
+  .board { display: none; }
+  .print-view { display: block !important; padding: 12px 20px 40px; }
+  .print-room { break-inside: avoid; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 8px; padding: 10px 12px; }
+  .print-room h3 { margin: 0 0 6px; font-size: 14px; }
+  .print-room.mixed { border-color: #b42318; }
+}
+.print-view { display: none; }
+.plist { width: 100%; border-collapse: collapse; font-size: 12px; }
+.plist th, .plist td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.plist th { color: var(--muted); font-weight: 700; }
+.hidden { display: none !important; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.stat { background: var(--bg); border-radius: 8px; padding: 8px; text-align: center; }
+.stat b { display: block; font-size: 18px; font-weight: 800; }
+.stat span { font-size: 11px; color: var(--muted); font-weight: 700; }
+.file-hidden { position: absolute; width: 0; height: 0; overflow: hidden; opacity: 0; }
+/* ===== v3 building layout ===== */
+.header { flex-wrap: wrap; }
+.logo-wrap { display: flex; flex-direction: column; margin-right: 4px; }
+.logo-sub { font-size: 11px; color: var(--muted); font-weight: 700; margin-top: -2px; }
+.note-bar {
+  flex: 0 0 auto;
+  background: #f7f1e4;
+  border-bottom: 1px solid var(--line);
+  color: #5c4a28;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+}
+.board.board-buildings {
+  min-width: 0;
+  min-height: 0;
+  padding: 6px 12px 32px;
+}
+.bldgs {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding-top: 6px;
+  position: relative;
+  z-index: 1;
+  overflow-x: auto;
+}
+.bldg {
+  width: 720px;
+  flex: 0 0 720px;
+  background: linear-gradient(#c9b496, #c4ae8e);
+  border: 2px solid #8d7350;
+  border-radius: 6px 6px 8px 8px;
+  padding: 0 8px 10px;
+  box-shadow: 0 8px 20px rgba(60,40,10,.16);
+  position: relative;
+}
+.bldg-roof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 -8px 14px;
+  padding: 10px 12px 8px;
+  background: #6e4f32;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+}
+.bldg-roof::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  transform: translateX(-50%);
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-bottom: 14px solid #6e4f32;
+}
+.bldg-name { font-weight: 800; font-size: 16px; flex: 1; letter-spacing: .04em; }
+.bldg-meta { font-size: 11px; font-weight: 600; opacity: .9; }
+.bldg-floor {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  align-items: stretch;
+  overflow: visible;
+}
+.floor-lab {
+  width: 28px;
+  flex: 0 0 28px;
+  background: #8a6a45;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11px;
+  writing-mode: vertical-rl;
+  letter-spacing: .1em;
+}
+.floor-rooms {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  min-height: 210px;
+  padding-top: 12px;
+  overflow: visible;
+}
+.board-buildings .room {
+  position: relative;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  min-width: 0;
+  height: auto;
+  min-height: 180px;
+}
+.board-buildings .room-head {
+  cursor: default;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 6px 4px 8px;
+}
+.board-buildings .room-head > div:first-child {
+  flex: 1 1 auto;
+  min-width: 72px;
+}
+.board-buildings .room-title { white-space: nowrap; font-size: 13px; }
+.board-buildings .room-sub { white-space: nowrap; font-size: 11px; }
+.board-buildings .room-count { white-space: nowrap; font-size: 12px; }
+.board-buildings .room-actions { flex: 0 0 auto; }
+.board-buildings .room-body { min-height: 64px; padding: 6px; gap: 4px; }
+.board-buildings .room-body .card { max-width: 100%; flex: 1 1 100%; min-width: 0; }
+.board-buildings .card { min-width: 0; max-width: none; padding: 3px 6px 3px 7px; }
+.board-buildings .card-name { font-size: 12px; }
+.board-buildings .card-meta { display: none; }
+.room.meet-room {
+  border-width: 3px !important;
+  border-style: solid !important;
+  border-color: var(--meet-color) !important;
+  overflow: visible;
+}
+.room.meet-room.over {
+  border-color: var(--meet-color) !important;
+}
+.room.meet-room {
+  padding-top: 10px;
+}
+.meet-legend {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  right: 6px;
+  transform: translateY(-50%);
+  background: var(--surface);
+  color: var(--meet-color);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+  padding: 1px 6px 2px;
+  z-index: 8;
+  width: auto;
+  max-width: none;
+  box-sizing: border-box;
+  display: block;
+  white-space: normal;
+  overflow: hidden;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.meet-legend-text {
+  display: inline;
+  min-width: 0;
+  white-space: normal;
+  overflow: visible;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.meet-legend.optional {
+  border: 1px dashed var(--meet-color);
+  background: #fff;
+}
+.meet-legend.over20 .meet-over,
+.meet-over {
+  display: inline-block;
+  background: #c43a31;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 0 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-left: 2px;
+}
+.meet-opt {
+  display: inline-block;
+  border: 1px solid var(--meet-color);
+  color: var(--meet-color);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 0 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.room.meet-optional {
+  border-style: dashed !important;
+  border-width: 3px !important;
+}
+.meet-chip.over20 { box-shadow: 0 0 0 2px rgba(196,58,49,.25); }
+.room.gender-남.meet-room .meet-legend { background: #f5f9fc; }
+.room.gender-여.meet-room .meet-legend { background: #fdf6f8; }
+.meet-legend button {
+  border: 0;
+  background: transparent;
+  color: var(--meet-color);
+  padding: 0 0 0 2px;
+  font-size: 11px;
+  line-height: 1;
+  flex: 0 0 auto;
+  opacity: .75;
+}
+.meet-legend button:hover { opacity: 1; }
+.room.unsecured {
+  background: repeating-linear-gradient(-45deg, #eeeae3, #eeeae3 6px, #e4dfd6 6px, #e4dfd6 12px) !important;
+  border-style: dashed;
+  border-color: #c5bbaa;
+  opacity: .78;
+}
+.room.unsecured .room-body { min-height: 48px; }
+.secure-btn {
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  padding: 1px 6px;
+  color: var(--muted);
+}
+.secure-btn.on { background: var(--accent-soft); color: var(--accent); border-color: #b7d4c8; }
+.meet-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 12px 8px;
+  position: sticky;
+  top: 42px;
+  z-index: 8;
+  background: linear-gradient(to bottom, rgba(243,239,231,.96), rgba(243,239,231,.88) 80%, transparent);
+}
+.meet-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  color: var(--meet-color, #3d4d2e);
+  border: 2px solid var(--meet-color, #3d4d2e);
+  border-radius: 8px;
+  padding: 3px 8px;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.meet-chip .n { font-size: 11px; opacity: .85; font-weight: 600; }
+.meet-chip.dragging { opacity: .4; }
+.meet-chip.used { opacity: .55; }
+.meet-chip-legend { font-size: 11px; font-weight: 800; color: var(--muted); align-self: center; margin-right: 4px; }
+.meet-summary {
+  margin-top: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 12px 14px;
+  max-width: 1380px;
+  box-shadow: var(--shadow);
+}
+.meet-summary h3 { margin: 0 0 8px; font-size: 14px; }
+.meet-summary table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.meet-summary th, .meet-summary td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.meet-summary th { color: var(--muted); font-weight: 700; }
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2b2925;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  z-index: 300;
+  display: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+.toast.show { display: block; }
+.meet-list .meet-item { font-size: 12px; padding: 5px 0; border-bottom: 1px solid var(--line); }
+.meet-list .meet-item b { font-weight: 800; }
+
+
+/* 레그도 */
+.board-legtree {
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible;
+  padding: 12px 16px 32px;
+}
+.legtree { max-width: 1280px; }
+.legtree-title { margin: 8px 0 4px; font-size: 22px; letter-spacing: -.02em; }
+.legtree-sub { margin: 0 0 16px; color: var(--muted); font-size: 13px; font-weight: 600; }
+.legtree-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.leg-card {
+  background: var(--surface);
+  border: 3px solid var(--meet-color, #3d4d2e);
+  border-radius: 14px;
+  padding: 12px 14px 14px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+.leg-card.over20 { box-shadow: 0 0 0 3px rgba(196,58,49,.18), var(--shadow); }
+.leg-card-h { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.leg-gid {
+  display: inline-block;
+  background: var(--meet-color);
+  color: #fff;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+.leg-label { font-weight: 800; font-size: 15px; color: var(--meet-color); }
+.leg-note { margin: 4px 0 6px; font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.4; }
+.leg-count { font-size: 13px; margin-bottom: 8px; }
+.leg-lines { display: flex; flex-direction: column; gap: 8px; }
+.leg-line { border-top: 1px dashed #ddd6c8; padding-top: 6px; }
+.leg-line-h { font-weight: 800; font-size: 13px; display: flex; justify-content: space-between; gap: 8px; }
+.leg-line-h span { font-weight: 600; color: var(--muted); font-size: 12px; }
+.leg-names { font-size: 12px; line-height: 1.45; margin-top: 2px; }
+.leg-meet { margin-top: 10px; font-size: 12px; font-weight: 800; color: var(--meet-color); }
+.leg-meet.opt { font-weight: 700; opacity: .9; }
+@media (max-width: 1100px) {
+  .legtree-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ===== mobile / iPad board ===== */
+body.is-dragging { cursor: grabbing; user-select: none; }
+body.is-dragging * { cursor: grabbing !important; }
+.btn-menu { display: none; }
+.save-hint { font-size: 11px; font-weight: 700; color: var(--muted); white-space: nowrap; margin-left: 6px; }
+.panel-backdrop { display: none; }
+.drop-dock {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 8px 10px 8px;
+  background: linear-gradient(to bottom, rgba(255,252,247,.97), rgba(255,252,247,.9) 80%, rgba(255,252,247,.7));
+  border-bottom: 1px solid var(--line);
+}
+.drop-dock.drop-ok {
+  background: var(--accent-soft);
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+.drop-dock-h { font-weight: 800; font-size: 13px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.drop-dock-h .hint { font-weight: 600; font-size: 11px; color: var(--muted); }
+.drop-dock-cards { display: flex; flex-wrap: nowrap; gap: 6px; overflow-x: auto; min-height: 44px; padding-bottom: 2px; -webkit-overflow-scrolling: touch; }
+.drop-dock-cards .card { min-width: 108px; max-width: 140px; flex: 0 0 auto; }
+.drop-dock-empty { font-size: 12px; color: var(--muted); padding: 8px 4px; font-weight: 600; }
+
+@media (max-width: 1200px) {
+  .side-right { display: none; }
+  .side-left {
+    position: fixed;
+    z-index: 80;
+    top: 0; bottom: 0; left: 0;
+    width: min(340px, 92vw);
+    flex-basis: auto;
+    transform: translateX(-105%);
+    transition: transform .2s ease;
+    box-shadow: 8px 0 28px rgba(0,0,0,.2);
+  }
+  .side-left.open { transform: none; }
+  .panel-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(20,16,10,.4);
+    z-index: 70;
+  }
+  .panel-backdrop.show { display: block; }
+  .btn-menu { display: inline-flex; align-items: center; }
+  .bldg { width: min(720px, calc(100vw - 20px)); flex: 0 0 min(720px, calc(100vw - 20px)); }
+  .board { min-width: 0; min-height: 0; }
+  .header-actions { flex-wrap: nowrap; overflow-x: auto; }
+}
+@media (max-width: 820px) {
+  .floor-rooms { grid-template-columns: 1fr 1fr; min-height: 0; }
+  .bldg { width: 100%; flex: 1 1 100%; }
+  .bldgs { flex-wrap: wrap; overflow-x: visible; gap: 12px; }
+  .header { gap: 8px; padding: 6px 8px; min-height: 0; }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; }
+  .note-bar { font-size: 11px; padding: 4px 10px; }
+  .board-buildings .room { min-height: 132px; }
+  .logo { font-size: 15px; }
+}
+@media (min-width: 821px) and (max-height: 920px) {
+  .board-buildings .room { min-height: 132px; }
+  .board-buildings .room-body { min-height: 44px; padding: 4px; gap: 3px; }
+  .board-buildings .card-name { font-size: 12px; }
+  .floor-rooms { min-height: 160px; }
+}
+
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="banner" id="banner" role="alert">
+    <span class="banner-icon">⚠</span>
+    <span>남녀 혼숙 배정이 되었습니다</span>
+  </div>
+  <div class="note-bar" id="note-bar">이름표를 잠시 누르거나, 마우스로 조금 끌어 방으로 놓으세요. 화면 가장자리로 가져가면 보드가 스크롤됩니다. 부부(이종성·장혜경, 이현구·윤지영)는 기본적으로 남녀를 나눠 배정합니다.</div>
+  <header class="header">
+    <button class="btn btn-menu" id="btn-menu" type="button" aria-label="메뉴">메뉴</button>
+    <div class="logo-wrap">
+      <div class="logo">세미나 <span>방배정</span> 보드</div>
+      <div class="logo-sub">26년 11월 1박2일 · 임시 배치</div>
+    </div>
+    <span class="save-hint" id="save-hint"></span>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-mode="숙소" id="tab-sleep" type="button">숙소 배정</button>
+      <button class="tab" data-mode="미팅" id="tab-meet" type="button">룸미팅 보기</button>
+    </div>
+    <div class="tabs" role="tablist" id="plan-tabs">
+      <button class="tab" data-plan="A" id="tab-plan-a" type="button">안 A · 10방 70석</button>
+      <button class="tab" data-plan="B" id="tab-plan-b" type="button">안 B · 초과 없이</button>
+      <button class="tab active" data-plan="C" id="tab-plan-c" type="button">안 C · 15방 104석</button>
+    </div>
+    <div class="tabs" role="tablist" id="view-tabs">
+      <button class="tab active" data-view="building" id="tab-view-bldg" type="button">건물 배치도</button>
+      <button class="tab" data-view="legtree" id="tab-view-leg" type="button">레그도</button>
+      <button class="tab" data-view="free" id="tab-view-free" type="button">자유 배치</button>
+    </div>
+    <div class="header-actions">
+      <button class="btn" id="btn-undo" type="button" title="Ctrl+Z">실행취소</button>
+      <button class="btn btn-primary" id="btn-auto" type="button">자동 배정 제안</button>
+      <button class="btn" id="btn-nov" type="button">11월 임시안 다시 불러오기</button>
+      <button class="btn" id="btn-sample" type="button">예시 데이터 불러오기</button>
+      <button class="btn" id="btn-roster" type="button">명단 불러오기</button>
+      <button class="btn" id="btn-export-json" type="button">저장</button>
+      <button class="btn" id="btn-import-json" type="button">불러오기</button>
+      <button class="btn" id="btn-export-csv" type="button">결과 내보내기</button>
+      <button class="btn" id="btn-print" type="button">인쇄</button>
+      <button class="btn btn-danger" id="btn-reset" type="button">초기화</button>
+    </div>
+  </header>
+  <div class="panel-backdrop" id="panel-backdrop"></div>
+  <div class="body">
+    <aside class="side side-left">
+      <div class="side-scroll">
+        <div class="section">
+          <div class="section-h">참가자 <span id="people-count" class="deck-count">0명</span></div>
+          <div class="row">
+            <label class="field">이름
+              <input type="text" id="in-name" placeholder="이름" autocomplete="off">
+            </label>
+            <label class="field" style="flex:0 0 148px">성별
+              <div class="seg" id="in-gender">
+                <button type="button" data-g="남" class="on m">남</button>
+                <button type="button" data-g="여">여</button>
+                <button type="button" data-g="미정">미정</button>
+              </div>
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">라인
+              <input type="text" id="in-line" list="line-list" placeholder="예: 손영주" autocomplete="off">
+            </label>
+            <label class="field">상위 리더
+              <input type="text" id="in-upline" list="upline-list" placeholder="없으면 비워 두세요" autocomplete="off">
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">지역
+              <input type="text" id="in-region" placeholder="선택" autocomplete="off">
+            </label>
+            <span style="flex:1"></span>
+          </div>
+          <label class="field" style="margin-bottom:6px">메모
+            <input type="text" id="in-memo" placeholder="선택" autocomplete="off">
+          </label>
+          <div class="row">
+            <button class="btn btn-primary" id="btn-add-person" type="button">한 명 추가</button>
+            <button class="btn" id="btn-bulk" type="button">일괄 붙여넣기</button>
+            <button class="btn" id="btn-csv-in" type="button">CSV 가져오기</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-sm" id="btn-people-list" type="button">참가자 목록·수정</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-h">이름표 덱 <span id="deck-count" class="deck-count"></span></div>
+          <div class="deck-tools">
+            <input type="search" id="deck-search" placeholder="이름·라인·지역 검색" autocomplete="off">
+          </div>
+          <div class="deck-tools">
+            <div class="seg filter-seg" id="deck-filter">
+              <button type="button" data-f="all" class="on">전체</button>
+              <button type="button" data-f="남">남</button>
+              <button type="button" data-f="여">여</button>
+              <button type="button" data-f="미정">미정</button>
+            </div>
+          </div>
+          <div class="deck-tools">
+            <select id="deck-line" title="라인 필터">
+              <option value="all">전체 라인</option>
+            </select>
+          </div>
+          <div class="hint" id="deck-hint">이름표를 끌어 방이나 보드 위에 놓으세요. 보드 빈 곳은 대기 구역입니다.</div>
+          <div class="deck" id="deck"></div>
+        </div>
+
+        <div class="section" id="sec-tree">
+          <div class="section-h">
+            라인(레그) 구조
+            <button type="button" class="collapse-btn" data-target="tree-body">접기</button>
+          </div>
+          <div class="section-body" id="tree-body"></div>
+        </div>
+
+        <div class="section" id="sec-rules">
+          <div class="section-h">
+            관계 규칙
+            <button type="button" class="collapse-btn" data-target="rules-body">접기</button>
+          </div>
+          <div class="section-body" id="rules-body">
+            <div class="hint">숙소 배정 기준입니다. 룸미팅에도 같은 규칙으로 경고를 보여 줍니다.</div>
+            <div class="row">
+              <button class="btn btn-sm" id="btn-add-ok" type="button">같이 배정 가능 (친한 사이)</button>
+            </div>
+            <div class="row">
+              <button class="btn btn-sm btn-danger" id="btn-add-never" type="button">절대 분리 쌍 추가</button>
+            </div>
+            <div id="rules-ok" class="rule-list" style="margin-top:8px"></div>
+            <div id="rules-never" class="rule-list" style="margin-top:6px"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="board-wrap" id="board-wrap">
+      <div class="drop-dock" id="drop-dock" data-unassigned="1">
+        <div class="drop-dock-h">미배정 <span id="drop-dock-count">0명</span><span class="hint">여기로 놓으면 대기합니다</span></div>
+        <div class="drop-dock-cards" id="drop-dock-cards"></div>
+      </div>
+      <div class="line-chips" id="line-chips"></div>
+      <div class="board" id="board">
+        <div class="board-hint" id="board-hint"></div>
+      </div>
+    </main>
+
+    <aside class="side side-right">
+      <div class="side-scroll">
+        <div class="section">
+          <div class="section-h" id="room-form-title">숙소 방 추가</div>
+          <label class="field">방 이름 / 호수
+            <input type="text" id="rm-name" placeholder="예: 301호" autocomplete="off">
+          </label>
+          <div class="row" style="margin-top:6px">
+            <label class="field">정원 (인실)
+              <input type="number" id="rm-cap" min="1" max="80" value="6">
+            </label>
+            <label class="field" id="rm-gender-wrap">성별 지정
+              <select id="rm-gender">
+                <option value="미지정">미지정</option>
+                <option value="남">남</option>
+                <option value="여">여</option>
+              </select>
+            </label>
+          </div>
+          <button class="btn btn-primary" id="btn-add-room" type="button" style="width:100%;margin-top:8px">방 만들기</button>
+          <p class="hint" id="room-form-hint">정원보다 많이 넣어도 됩니다. 초과 인원은 빨간색으로 표시됩니다.</p>
+          <button class="btn" id="btn-add-bldg" type="button" style="width:100%;margin-top:8px">동 추가 (3층 4호실)</button>
+        </div>
+        <div class="section">
+          <div class="section-h">룸미팅 지정 (8인실)</div>
+          <div class="meet-list" id="meet-list"></div>
+          <p class="hint">8인실이 그 라인(남녀 합쳐 10~20명 안팎)의 모임 장소입니다. 위 보드의 녹색 배지를 8인실에 끌어 놓으세요. 숙박 인원과는 별개입니다.</p>
+        </div>
+        <div class="section">
+          <div class="section-h">현황</div>
+          <div class="stat-grid" id="stats"></div>
+        </div>
+        <div class="section">
+          <div class="section-h">경고</div>
+          <div class="warn-panel" id="warnings"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="print-view" id="print-view"></div>
+<div class="modal-back" id="modal-back"></div>
+<input type="file" id="file-json" class="file-hidden" accept=".json,application/json">
+<input type="file" id="file-csv" class="file-hidden" accept=".csv,text/csv,text/plain">
+<input type="file" id="file-roster" class="file-hidden" accept=".csv,text/csv,text/plain">
+<datalist id="upline-list"></datalist>
+<datalist id="line-list"></datalist>
+
+<script>
+(function () {
+  "use strict";
+
+  const STORAGE_KEY = "seminar-room-board-v6";
+  const STORAGE_KEY_V3 = "seminar-room-board-v3";
+  const STORAGE_KEY_V2 = "seminar-room-board-v2";
+  const STORAGE_KEY_V1 = "seminar-room-board-v1";
+  const LINE_ORDER = ["이정훈","손영주","여동연","김옥순/김정숙","이정현","장혜경","신량","박나경","김여경","이현숙","박지","윤지영","김예원"];
+  const LEG_COLORS = ["#2f6f5e", "#2c5a86", "#8a5a2b", "#6b3d8a", "#2a7a7a", "#8a2f45", "#6a6a2e", "#3d5a7a", "#7a4a2a", "#4a6b3d"];
+
+  const NOV_PEOPLE = [
+  [
+    "박나경",
+    "박나경(박동순)",
+    "박나경",
+    "여"
+  ],
+  [
+    "박나경",
+    "박나경(박동순)",
+    "이도현",
+    "남"
+  ],
+  [
+    "박나경",
+    "박나경(박동순)",
+    "이인탁",
+    "남"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "윤지영",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "김경희",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "김문희",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "윤재화",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "박현숙",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "윤재술",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "김현자",
+    "여"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "이현구",
+    "남"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "이인규",
+    "남"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "김태수",
+    "남"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "김승태",
+    "남"
+  ],
+  [
+    "윤지영",
+    "윤지영(부부사업자 남편 이현구)",
+    "박인숙",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "한남희",
+    "남"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "김예원",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "김향숙",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "박찬미",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "이순규",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "김소연",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "유경숙",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "송금숙",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "한정임",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "김신자",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "조윤서",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "송양선",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "송은정",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "강복삼",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "이정옥",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "이주연",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "오신순",
+    "여"
+  ],
+  [
+    "김예원",
+    "김예원(전원숙박)",
+    "부은희",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "정윤희",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "김봄",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "김유진",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "강갑순",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "노순임",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "김연주",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "강지원",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "김재정",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "김정윤",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "손영주",
+    "여"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "이기영",
+    "남"
+  ],
+  [
+    "손영주",
+    "손영주 퍼스널",
+    "조성훈",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "김옥순",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "김정숙",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "여춘숙",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "여연주",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "하진숙",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "류정애",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "공혜진",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "강희연",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "김은진",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "권기영",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "이수영",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "박정남",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "이영희",
+    "여"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "성태윤",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "조경규",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "권상현",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "권오성",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "김세진",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "고흥갑",
+    "남"
+  ],
+  [
+    "김옥순/김정숙",
+    "김옥순라인",
+    "서명우",
+    "남"
+  ],
+  [
+    "이현숙",
+    "이현숙라인",
+    "이현숙",
+    "여"
+  ],
+  [
+    "이현숙",
+    "이현숙라인",
+    "정선화",
+    "여"
+  ],
+  [
+    "이현숙",
+    "이현숙라인",
+    "이다현",
+    "여"
+  ],
+  [
+    "이현숙",
+    "이현숙라인",
+    "이다인",
+    "여"
+  ],
+  [
+    "이현숙",
+    "이현숙라인",
+    "윤여봉",
+    "남"
+  ],
+  [
+    "이현숙",
+    "이현숙라인",
+    "김남중",
+    "남"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "박지",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "강경신",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "정도희",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "최정인",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "이순자",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "홍다영",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "원귀임",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "한점례",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "이미자(박지)",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "홍다혜",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "강정순",
+    "여"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "배영수",
+    "남"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "고만석",
+    "남"
+  ],
+  [
+    "박지",
+    "박지라인",
+    "백영우",
+    "남"
+  ],
+  [
+    "김여경",
+    "김여경(개명전 김선인)",
+    "김여경",
+    "여"
+  ],
+  [
+    "김여경",
+    "김여경(개명전 김선인)",
+    "김지숙",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "여동연",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "김성숙",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "오희진",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "이지영",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "박혜정",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "박혜숙",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "방근영",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "박현정",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "김미경",
+    "여"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "서용석",
+    "남"
+  ],
+  [
+    "여동연",
+    "여동연라인",
+    "신용택",
+    "남"
+  ],
+  [
+    "신량",
+    "신량라인",
+    "신량",
+    "여"
+  ],
+  [
+    "신량",
+    "신량라인",
+    "권경화",
+    "여"
+  ],
+  [
+    "이정현",
+    "이정현라인",
+    "이정현",
+    "남"
+  ],
+  [
+    "이정현",
+    "이정현라인",
+    "송수경",
+    "여"
+  ],
+  [
+    "이정현",
+    "이정현라인",
+    "이미자(이정현)",
+    "여"
+  ],
+  [
+    "장혜경",
+    "장혜경(부부사업자 남편 이종성)",
+    "이종성",
+    "남"
+  ],
+  [
+    "장혜경",
+    "장혜경(부부사업자 남편 이종성)",
+    "장혜경",
+    "여"
+  ],
+  [
+    "이정훈",
+    "이정훈 퍼스널",
+    "이정훈",
+    "남"
+  ],
+  [
+    "이정훈",
+    "이정훈 퍼스널",
+    "오동익",
+    "남"
+  ],
+  [
+    "이정훈",
+    "이정훈 퍼스널",
+    "성루결",
+    "남"
+  ],
+  [
+    "이정훈",
+    "이정훈 퍼스널",
+    "김태미",
+    "여"
+  ]
+];
+  const NOV_SLEEP_A = {
+  "A101": [
+    "성태윤",
+    "조경규",
+    "권상현",
+    "권오성",
+    "김세진",
+    "고흥갑",
+    "서명우",
+    "한남희"
+  ],
+  "A102": [
+    "이현구",
+    "이인규",
+    "김태수",
+    "김승태",
+    "고만석",
+    "백영우"
+  ],
+  "A103": [
+    "이정훈",
+    "오동익",
+    "성루결",
+    "이기영",
+    "조성훈",
+    "이정현"
+  ],
+  "A104": [
+    "서용석",
+    "신용택",
+    "윤여봉",
+    "김남중",
+    "이도현",
+    "이인탁",
+    "이종성",
+    "배영수"
+  ],
+  "A201": [
+    "김예원",
+    "김향숙",
+    "박찬미",
+    "이순규",
+    "김소연",
+    "유경숙",
+    "송금숙",
+    "한정임",
+    "김신자",
+    "조윤서",
+    "송양선",
+    "송은정",
+    "강복삼",
+    "이정옥",
+    "이주연",
+    "오신순",
+    "부은희"
+  ],
+  "A202": [
+    "손영주",
+    "정윤희",
+    "김봄",
+    "김유진",
+    "강갑순",
+    "노순임",
+    "김연주",
+    "강지원",
+    "김재정",
+    "김정윤",
+    "송수경",
+    "이미자(이정현)"
+  ],
+  "A203": [
+    "여동연",
+    "김성숙",
+    "오희진",
+    "이지영",
+    "박혜정",
+    "박혜숙",
+    "방근영",
+    "박현정",
+    "김미경",
+    "신량",
+    "권경화",
+    "박나경",
+    "김태미",
+    "장혜경"
+  ],
+  "A204": [
+    "김옥순",
+    "김정숙",
+    "여춘숙",
+    "여연주",
+    "하진숙",
+    "류정애",
+    "공혜진",
+    "강희연",
+    "김은진",
+    "권기영",
+    "이수영",
+    "박정남",
+    "이영희",
+    "김여경",
+    "김지숙"
+  ],
+  "A301": [
+    "박지",
+    "강경신",
+    "정도희",
+    "최정인",
+    "이순자",
+    "홍다영",
+    "원귀임",
+    "한점례",
+    "이미자(박지)",
+    "홍다혜",
+    "강정순"
+  ],
+  "A302": [
+    "윤지영",
+    "김경희",
+    "김문희",
+    "윤재화",
+    "박현숙",
+    "윤재술",
+    "김현자",
+    "박인숙",
+    "이현숙",
+    "정선화",
+    "이다현",
+    "이다인"
+  ]
+};
+  const NOV_SLEEP_B = {
+  "A101": [
+    "성태윤",
+    "조경규",
+    "권상현",
+    "권오성",
+    "김세진",
+    "고흥갑",
+    "서명우",
+    "한남희"
+  ],
+  "A102": [
+    "이현구",
+    "이인규",
+    "김태수",
+    "김승태",
+    "고만석",
+    "백영우"
+  ],
+  "A103": [
+    "이정훈",
+    "오동익",
+    "성루결",
+    "이기영",
+    "조성훈",
+    "이정현"
+  ],
+  "A104": [
+    "서용석",
+    "신용택",
+    "윤여봉",
+    "김남중",
+    "이도현",
+    "이인탁",
+    "이종성",
+    "배영수"
+  ],
+  "A201": [
+    "김예원",
+    "김향숙",
+    "박찬미",
+    "이순규",
+    "김소연",
+    "유경숙",
+    "송금숙",
+    "한정임"
+  ],
+  "A202": [
+    "김신자",
+    "조윤서",
+    "송양선",
+    "송은정",
+    "강복삼",
+    "이정옥"
+  ],
+  "A203": [
+    "이주연",
+    "오신순",
+    "부은희",
+    "신량",
+    "권경화",
+    "박나경"
+  ],
+  "A204": [
+    "여동연",
+    "김성숙",
+    "오희진",
+    "이지영",
+    "박혜정",
+    "박혜숙",
+    "방근영",
+    "박현정"
+  ],
+  "A301": [
+    "박지",
+    "강경신",
+    "정도희",
+    "최정인",
+    "이순자",
+    "홍다영",
+    "원귀임",
+    "한점례"
+  ],
+  "A302": [
+    "이미자(박지)",
+    "홍다혜",
+    "강정순",
+    "송수경",
+    "이미자(이정현)",
+    "장혜경"
+  ],
+  "A304": [
+    "윤지영",
+    "김경희",
+    "김문희",
+    "윤재화",
+    "박현숙",
+    "윤재술",
+    "김현자",
+    "박인숙",
+    "김미경"
+  ],
+  "B101": [
+    "김옥순",
+    "김정숙",
+    "여춘숙",
+    "여연주",
+    "하진숙",
+    "류정애",
+    "공혜진",
+    "강희연"
+  ],
+  "B104": [
+    "김은진",
+    "권기영",
+    "이수영",
+    "박정남",
+    "이영희",
+    "김태미",
+    "김여경",
+    "김지숙"
+  ],
+  "B201": [
+    "손영주",
+    "정윤희",
+    "김봄",
+    "김유진",
+    "강갑순",
+    "노순임",
+    "김연주",
+    "강지원"
+  ],
+  "B202": [
+    "김재정",
+    "김정윤",
+    "이현숙",
+    "정선화",
+    "이다현",
+    "이다인"
+  ]
+};
+  const NOV_SLEEP_C = {
+  "A101": [
+    "성태윤",
+    "조경규",
+    "권상현",
+    "권오성",
+    "김세진",
+    "고흥갑",
+    "서명우",
+    "이기영"
+  ],
+  "A102": [
+    "조성훈",
+    "이정훈",
+    "오동익",
+    "성루결",
+    "서용석",
+    "신용택"
+  ],
+  "A103": [
+    "고만석",
+    "백영우",
+    "이현구",
+    "이인규",
+    "김태수",
+    "김승태"
+  ],
+  "A104": [
+    "이정현",
+    "이종성",
+    "이도현",
+    "이인탁",
+    "윤여봉",
+    "김남중",
+    "한남희",
+    "배영수"
+  ],
+  "A201": [
+    "여동연",
+    "김성숙",
+    "오희진",
+    "이지영",
+    "박혜정",
+    "박혜숙",
+    "방근영",
+    "박현정",
+    "김미경"
+  ],
+  "A202": [
+    "박지",
+    "강경신",
+    "정도희",
+    "최정인",
+    "이순자",
+    "홍다영"
+  ],
+  "A203": [
+    "윤지영",
+    "김경희",
+    "김문희",
+    "윤재화",
+    "박현숙",
+    "윤재술",
+    "박인숙"
+  ],
+  "A204": [
+    "김옥순",
+    "김정숙",
+    "여춘숙",
+    "여연주",
+    "하진숙",
+    "류정애",
+    "공혜진",
+    "강희연"
+  ],
+  "A301": [
+    "손영주",
+    "정윤희",
+    "김봄",
+    "김유진",
+    "강갑순",
+    "노순임",
+    "김연주",
+    "강지원"
+  ],
+  "A302": [
+    "원귀임",
+    "한점례",
+    "이미자(박지)",
+    "홍다혜",
+    "강정순",
+    "김현자"
+  ],
+  "A303": [
+    "송수경",
+    "이미자(이정현)",
+    "장혜경",
+    "신량",
+    "권경화",
+    "박나경"
+  ],
+  "A304": [
+    "김은진",
+    "권기영",
+    "이수영",
+    "박정남",
+    "이영희",
+    "김태미",
+    "김재정",
+    "김정윤"
+  ],
+  "B101": [
+    "김예원",
+    "김향숙",
+    "박찬미",
+    "이순규",
+    "김소연",
+    "유경숙",
+    "송금숙",
+    "한정임",
+    "김신자",
+    "조윤서",
+    "송양선"
+  ],
+  "B102": [
+    "송은정",
+    "강복삼",
+    "이정옥",
+    "이주연",
+    "오신순",
+    "부은희"
+  ],
+  "B103": [
+    "김여경",
+    "김지숙",
+    "이현숙",
+    "정선화",
+    "이다현",
+    "이다인"
+  ]
+};
+  const NOV_MEET_A = {
+  "A201": [
+    "김예원",
+    "신량"
+  ],
+  "A204": [
+    "김옥순/김정숙",
+    "김여경"
+  ],
+  "A301": [
+    "박지",
+    "이현숙"
+  ],
+  "A101": [
+    "손영주",
+    "이정훈",
+    "이정현",
+    "장혜경"
+  ],
+  "A104": [
+    "여동연",
+    "윤지영",
+    "박나경"
+  ]
+};
+  const NOV_MEET_B = {
+  "A201": [
+    "김예원"
+  ],
+  "B101": [
+    "김옥순/김정숙"
+  ],
+  "A301": [
+    "박지"
+  ],
+  "B201": [
+    "손영주"
+  ],
+  "A204": [
+    "여동연"
+  ],
+  "A304": [
+    "윤지영",
+    "박나경",
+    "신량",
+    "김여경"
+  ],
+  "B104": [
+    "이현숙",
+    "이정훈",
+    "이정현",
+    "장혜경"
+  ]
+};
+  const NOV_MEET_C = {
+  "A204": "G1",
+  "A201": "G2",
+  "A104": "G3",
+  "B101": "G4",
+  "A101": "G5",
+  "A301": "G6"
+};
+  const NOV_MEET_C_OPTIONAL = {
+  "A304": "G1"
+};
+  const NOV_GROUPS = [
+  {
+    "id": "G1",
+    "color": "#1f6b55",
+    "lines": [
+      "이정훈",
+      "손영주",
+      "김옥순/김정숙"
+    ],
+    "label": "이정훈 · 손영주 · 김옥순/김정숙",
+    "note": "이정훈 퍼스널(김태미 하위) + 손영주 퍼스널 + 김옥순/김정숙",
+    "over20": true,
+    "optionalSplit": true
+  },
+  {
+    "id": "G2",
+    "color": "#8a3d1f",
+    "lines": [
+      "여동연"
+    ],
+    "label": "여동연",
+    "note": "여동연 라인 별도",
+    "over20": false,
+    "optionalSplit": false
+  },
+  {
+    "id": "G3",
+    "color": "#1d4e7a",
+    "lines": [
+      "이정현",
+      "장혜경",
+      "신량",
+      "박나경"
+    ],
+    "label": "이정현 · 장혜경 · 신량 · 박나경",
+    "note": "이정현 퍼스널(송수경 하위) + 장혜경 퍼스널(신량 + 박동순)",
+    "over20": false,
+    "optionalSplit": false
+  },
+  {
+    "id": "G4",
+    "color": "#0e6e6e",
+    "lines": [
+      "김예원"
+    ],
+    "label": "김예원",
+    "note": "김예원 라인 별도",
+    "over20": false,
+    "optionalSplit": false
+  },
+  {
+    "id": "G5",
+    "color": "#5c2d82",
+    "lines": [
+      "김여경",
+      "이현숙"
+    ],
+    "label": "김여경 · 이현숙",
+    "note": "김여경 + 이현숙 라인",
+    "over20": false,
+    "optionalSplit": false
+  },
+  {
+    "id": "G6",
+    "color": "#9a2348",
+    "lines": [
+      "박지",
+      "윤지영"
+    ],
+    "label": "박지 · 최정인 · 윤지영",
+    "note": "박지+최정인+윤지영 라인",
+    "over20": true,
+    "optionalSplit": false
+  }
+];
+  const NOV_SECURE_A = [
+  "A101",
+  "A102",
+  "A103",
+  "A104",
+  "A201",
+  "A202",
+  "A203",
+  "A204",
+  "A301",
+  "A302"
+];
+  const NOV_SECURE_B = [
+  "A101",
+  "A102",
+  "A103",
+  "A104",
+  "A201",
+  "A202",
+  "A203",
+  "A204",
+  "A301",
+  "A302",
+  "A304",
+  "B101",
+  "B104",
+  "B201",
+  "B202"
+];
+  const NOV_SECURE_C = [
+  "A101",
+  "A102",
+  "A103",
+  "A104",
+  "A201",
+  "A202",
+  "A203",
+  "A204",
+  "A301",
+  "A302",
+  "A303",
+  "A304",
+  "B101",
+  "B102",
+  "B103"
+];
+  const NOV_GENDER = {
+  "A101": "남",
+  "A102": "남",
+  "A103": "남",
+  "A104": "남",
+  "A201": "여",
+  "A202": "여",
+  "A203": "여",
+  "A204": "여",
+  "A301": "여",
+  "A302": "여",
+  "A303": "여",
+  "A304": "여",
+  "B101": "여",
+  "B102": "여",
+  "B103": "여",
+  "B104": "여",
+  "B201": "여",
+  "B202": "여",
+  "B203": "여",
+  "B204": "여",
+  "B301": "여",
+  "B302": "여",
+  "B303": "여",
+  "B304": "여"
+};
+
+
+  const $ = (sel, el) => (el || document).querySelector(sel);
+  const $$ = (sel, el) => Array.from((el || document).querySelectorAll(sel));
+
+  function uid(prefix) {
+    return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  }
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function parseGender(s) {
+    const v = String(s || "").trim().toLowerCase();
+    if (["남", "남자", "m", "male", "man"].includes(v)) return "남";
+    if (["여", "여자", "f", "female", "woman", "w"].includes(v)) return "여";
+    return "미정";
+  }
+  function normalizeLineName(s) {
+    let t = String(s || "").trim();
+    t = t.replace(/\*+$/g, "").replace(/[Pｐ]$/i, "").replace(/퍼스널$/,"")
+         .replace(/\s+라인$/,"").trim();
+    const compact = t.replace(/\s+/g, "");
+    if (/^[가-힣]{2}$/.test(compact)) t = compact;
+    else if (/^[가-힣]+$/.test(compact) && /\s/.test(t) && compact.length <= 4) t = compact;
+    if (t === "김옥순" || t === "김정숙" || /^김옥순\s*\/\s*김정숙/.test(t)) t = "김옥순/김정숙";
+    return t;
+  }
+  function lineOf(p) { return ((p && p.line) || "").trim(); }
+  function displayLine(p) { return lineOf(p) || "라인 미지정"; }
+  function linesList() {
+    const set = new Set(state.people.map(displayLine));
+    const known = LINE_ORDER.filter((l) => set.has(l));
+    const rest = Array.from(set).filter((l) => !LINE_ORDER.includes(l)).sort((a, b) => a.localeCompare(b, "ko"));
+    return known.concat(rest);
+  }
+  function lineColor(line) {
+    const all = LINE_ORDER.concat(linesList().filter((l) => !LINE_ORDER.includes(l)));
+    const idx = Math.max(0, all.indexOf(line));
+    return LEG_COLORS[idx % LEG_COLORS.length];
+  }
+  function download(filename, text, mime) {
+    const blob = new Blob([text], { type: mime || "text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  }
+
+  let state = emptyState();
+  let history = [];
+  let future = [];
+  let addGender = "남";
+  let deckFilter = "all";
+  let deckLineFilter = "all";
+  let deckQuery = "";
+
+  function emptyState() {
+    return {
+      version: 3,
+      mode: "숙소",
+      view: "building",
+      plan: "C",
+      people: [],
+      rooms: [],
+      buildings: [],
+      sleep: { room: {}, free: {} },
+      meeting: { room: {}, free: {} },
+      plans: {},
+      okGroups: [],
+      neverPairs: [],
+      roomSeq: { 숙소: 1, 미팅: 1 }
+    };
+  }
+  function cloneState(s) { return JSON.parse(JSON.stringify(s)); }
+  function bucket() { return state.mode === "미팅" ? state.meeting : state.sleep; }
+
+  function pushHist() {
+    history.push(cloneState(state));
+    if (history.length > 40) history.shift();
+    future = [];
+    persist();
+  }
+  function undo() {
+    if (!history.length) return;
+    future.push(cloneState(state));
+    state = history.pop();
+    persist();
+    render();
+  }
+  function redo() {
+    if (!future.length) return;
+    history.push(cloneState(state));
+    state = future.pop();
+    persist();
+    render();
+  }
+  function setSaveHint(msg) {
+    const el = document.getElementById("save-hint");
+    if (el) el.textContent = msg || "";
+  }
+  function persist() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+    setSaveHint("이 기기에 저장됨");
+  }
+  function applyPersistedRaw(raw) {
+    const s = (typeof raw === "string") ? JSON.parse(raw) : raw;
+    if (s && Array.isArray(s.people)) {
+      state = normalize(s);
+      fillMissingLines();
+      return true;
+    }
+    return false;
+  }
+  async function loadPersisted() {
+    try {
+      let raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) raw = localStorage.getItem(STORAGE_KEY_V3);
+      if (!raw) raw = localStorage.getItem(STORAGE_KEY_V2);
+      if (!raw) raw = localStorage.getItem(STORAGE_KEY_V1);
+      if (!raw) return false;
+      if (applyPersistedRaw(raw)) {
+        setSaveHint("이 기기 저장을 불러왔습니다");
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+  function normalize(s) {
+    const d = emptyState();
+    Object.assign(d, s);
+    d.people = Array.isArray(s.people) ? s.people : [];
+    d.rooms = Array.isArray(s.rooms) ? s.rooms : [];
+    d.buildings = Array.isArray(s.buildings) ? s.buildings : [];
+    d.sleep = s.sleep || { room: {}, free: {} };
+    d.meeting = s.meeting || { room: {}, free: {} };
+    d.sleep.room = d.sleep.room || {};
+    d.sleep.free = d.sleep.free || {};
+    d.meeting.room = d.meeting.room || {};
+    d.meeting.free = d.meeting.free || {};
+    d.okGroups = Array.isArray(s.okGroups) ? s.okGroups : [];
+    d.neverPairs = Array.isArray(s.neverPairs) ? s.neverPairs : [];
+    d.roomSeq = s.roomSeq || { 숙소: 1, 미팅: 1 };
+    d.mode = s.mode === "미팅" ? "미팅" : "숙소";
+    d.view = (s.view === "free" || s.view === "legtree") ? s.view : "building";
+    d.plan = (s.plan === "A" || s.plan === "B" || s.plan === "C") ? s.plan : "C";
+    d.plans = s.plans || {};
+    d.version = 3;
+    d.people.forEach((p) => {
+      if (p.gender !== "남" && p.gender !== "여") p.gender = "미정";
+      p.line = (p.line || "").trim();
+    });
+    d.rooms.forEach((r) => {
+      if (r.secured == null) r.secured = true;
+      if (!r.meetingLines) r.meetingLines = [];
+    });
+    return d;
+  }
+  function fillMissingLines() {
+    state.people.forEach((p) => {
+      if (!lineOf(p)) p.line = topRoot(p).name || "";
+    });
+  }
+
+  function personById(id) { return state.people.find((p) => p.id === id); }
+  function personByName(name) {
+    if (!name) return null;
+    const n = name.trim();
+    return state.people.find((p) => p.name === n) || null;
+  }
+  function resolveUplineId(p) {
+    if (p.uplineId && personById(p.uplineId)) return p.uplineId;
+    if (p.uplineName) {
+      const u = personByName(p.uplineName);
+      if (u && u.id !== p.id) return u.id;
+    }
+    return null;
+  }
+  function childrenOf(id) {
+    return state.people.filter((p) => resolveUplineId(p) === id);
+  }
+  function roots() {
+    return state.people.filter((p) => !resolveUplineId(p));
+  }
+  function walkUp(p, seen) {
+    seen = seen || new Set();
+    let cur = p;
+    while (cur) {
+      if (seen.has(cur.id)) break;
+      seen.add(cur.id);
+      const id = resolveUplineId(cur);
+      if (!id) return cur;
+      cur = personById(id);
+    }
+    return p;
+  }
+  function topRoot(p) { return walkUp(p); }
+  function legColor(p) {
+    return lineColor(displayLine(p));
+  }
+  function peopleInLine(lineName) {
+    return state.people.filter((p) => displayLine(p) === lineName);
+  }
+  function subtreeIdsInLine(rootId, lineName) {
+    const out = [];
+    const visit = (id, seen) => {
+      if (seen.has(id)) return;
+      seen.add(id);
+      const p = personById(id);
+      if (!p || displayLine(p) !== lineName) return;
+      out.push(id);
+      childrenOf(id).forEach((c) => visit(c.id, seen));
+    };
+    visit(rootId, new Set());
+    return out;
+  }
+  function lineRoots(lineName) {
+    const list = peopleInLine(lineName);
+    const ids = new Set(list.map((p) => p.id));
+    return list.filter((p) => {
+      const u = resolveUplineId(p);
+      if (!u || !ids.has(u)) return true;
+      const up = personById(u);
+      if (!up || displayLine(up) !== lineName) return true;
+      return false;
+    });
+  }
+  function subtreeIds(rootId) {
+    const out = [];
+    const visit = (id, seen) => {
+      if (seen.has(id)) return;
+      seen.add(id);
+      out.push(id);
+      childrenOf(id).forEach((c) => visit(c.id, seen));
+    };
+    visit(rootId, new Set());
+    return out;
+  }
+
+  function placementOf(pid) {
+    const b = bucket();
+    if (b.room[pid]) return { kind: "room", roomId: b.room[pid] };
+    if (b.free[pid]) return { kind: "free", x: b.free[pid].x, y: b.free[pid].y };
+    return { kind: "deck" };
+  }
+  function occupants(roomId, mode) {
+    const b = mode ? (mode === "미팅" ? state.meeting : state.sleep) : bucket();
+    return state.people.filter((p) => b.room[p.id] === roomId);
+  }
+  function assignToRoom(pid, roomId, record) {
+    if (record) pushHist();
+    const b = bucket();
+    delete b.free[pid];
+    b.room[pid] = roomId;
+  }
+  function assignManyToRoom(ids, roomId, record) {
+    if (record) pushHist();
+    const b = bucket();
+    ids.forEach((pid) => {
+      delete b.free[pid];
+      b.room[pid] = roomId;
+    });
+  }
+  function placeFree(pid, x, y, record) {
+    if (record) pushHist();
+    const b = bucket();
+    delete b.room[pid];
+    b.free[pid] = { x: Math.max(0, x), y: Math.max(0, y) };
+    const rooms = state.rooms.filter((r) => r.type === (state.mode === "미팅" ? "미팅" : "숙소"));
+    adjustFreePositions(rooms);
+  }
+  function returnToDeck(pid, record) {
+    if (record) pushHist();
+    const b = bucket();
+    delete b.room[pid];
+    delete b.free[pid];
+  }
+  function clearPlacements(which) {
+    if (which === "미팅") state.meeting = { room: {}, free: {} };
+    else state.sleep = { room: {}, free: {} };
+  }
+
+  function roomMixed(room) {
+    if (room.type !== "숙소") return false;
+    const occ = occupants(room.id, "숙소").filter((p) => p.gender === "남" || p.gender === "여");
+    if (!occ.length) return false;
+    if (room.gender === "남") return occ.some((p) => p.gender === "여");
+    if (room.gender === "여") return occ.some((p) => p.gender === "남");
+    const g = new Set(occ.map((p) => p.gender));
+    return g.has("남") && g.has("여");
+  }
+  function wrongGenderPeople(room) {
+    const occ = occupants(room.id, "숙소").filter((p) => p.gender === "남" || p.gender === "여");
+    if (room.gender === "남") return occ.filter((p) => p.gender === "여");
+    if (room.gender === "여") return occ.filter((p) => p.gender === "남");
+    if (roomMixed(room)) return occ;
+    return [];
+  }
+  function neverViolations(mode) {
+    const b = mode === "미팅" ? state.meeting : state.sleep;
+    const out = [];
+    state.neverPairs.forEach((pair) => {
+      const ra = b.room[pair.a];
+      const rb = b.room[pair.b];
+      if (ra && rb && ra === rb) out.push({ pair, roomId: ra, mode });
+    });
+    return out;
+  }
+  function computeWarnings() {
+    const list = [];
+    let mixed = false;
+    state.rooms.filter((r) => r.type === "숙소").forEach((r) => {
+      const occ = occupants(r.id, "숙소");
+      if (occ.length > r.capacity) {
+        list.push({ level: "bad", kind: "over", text: "숙소 「" + r.name + "」 정원 초과 (" + occ.length + ", 초과" + (occ.length - r.capacity) + ")" });
+      }
+      if (roomMixed(r)) {
+        mixed = true;
+        list.push({ level: "bad", kind: "mixed", text: "숙소 「" + r.name + "」 남녀 혼숙 배정" });
+      }
+    });
+    state.rooms.filter((r) => r.type === "미팅").forEach((r) => {
+      const occ = occupants(r.id, "미팅");
+      if (occ.length > r.capacity) {
+        list.push({ level: "bad", kind: "over", text: "미팅방 「" + r.name + "」 정원 초과 (" + occ.length + ", 초과" + (occ.length - r.capacity) + ")" });
+      }
+    });
+    neverViolations("숙소").forEach((v) => {
+      const r = state.rooms.find((x) => x.id === v.roomId);
+      const a = personById(v.pair.a);
+      const b = personById(v.pair.b);
+      list.push({ level: "bad", kind: "never", text: "숙소 「" + (r ? r.name : "") + "」 절대 분리 위반: " + (a && a.name) + " · " + (b && b.name) });
+    });
+    neverViolations("미팅").forEach((v) => {
+      const r = state.rooms.find((x) => x.id === v.roomId);
+      const a = personById(v.pair.a);
+      const b = personById(v.pair.b);
+      list.push({ level: "bad", kind: "never", text: "미팅방 「" + (r ? r.name : "") + "」 절대 분리 위반: " + (a && a.name) + " · " + (b && b.name) });
+    });
+    const unknownN = state.people.filter((p) => p.gender === "미정").length;
+    if (unknownN) list.push({ level: "warn", kind: "unknown-gender", text: "성별 미정 " + unknownN + "명" });
+    const unSleep = { 남: 0, 여: 0, 미정: 0 };
+    const unMeet = { 남: 0, 여: 0, 미정: 0 };
+    state.people.forEach((p) => {
+      const g = (p.gender === "남" || p.gender === "여") ? p.gender : "미정";
+      if (!state.sleep.room[p.id]) unSleep[g]++;
+      const tagged = meetRoomOfLine(displayLine(p));
+      if (!tagged) unMeet[g]++;
+    });
+    if (state.people.length) {
+      list.push({ level: "info", kind: "unassigned", text: "숙소 미배정  " + unSleep["남"] + "남 / " + unSleep["여"] + "여 / " + unSleep["미정"] + "미정" });
+      const unLines = linesList().filter((ln) => !meetRoomOfLine(ln));
+      if (unLines.length) {
+        list.push({ level: "info", kind: "unassigned", text: "룸미팅 미지정 라인  " + unLines.join(", ") });
+      } else {
+        list.push({ level: "info", kind: "unassigned", text: "룸미팅 라인은 모두 8인실에 지정되어 있습니다." });
+      }
+    }
+    const beds = state.rooms.filter((r) => r.type === "숙소" && r.secured !== false).reduce((s, r) => s + (r.capacity || 0), 0);
+    if (state.people.length && beds && state.people.length > beds) {
+      list.push({ level: "warn", kind: "beds", text: "확보 침대 " + beds + "석에 참가자 " + state.people.length + "명 (부족 " + (state.people.length - beds) + ")" });
+    }
+    list.push({ level: "info", kind: "spouse", text: "부부 이종성·장혜경, 이현구·윤지영은 성별을 나눠 배정하는 것이 기본입니다." });
+    return { list, mixed, unSleep, unMeet, unknownN };
+  }
+
+  function cardHTML(p, opts) {
+    opts = opts || {};
+    const up = resolveUplineId(p);
+    const upName = up ? (personById(up) || {}).name : (p.uplineName || "");
+    const lineName = displayLine(p);
+    const meta = [lineName, upName && upName !== lineName ? upName : "", p.region].filter(Boolean).join(" · ");
+    const cls = ["card"];
+    if (opts.wrong) cls.push("wrong-gender");
+    const gClass = p.gender === "미정" ? "미정" : p.gender;
+    const gLabel = p.gender === "미정" ? "성별?" : p.gender;
+    return '<div class="' + cls.join(" ") + '" data-id="' + p.id + '" style="border-left-color:' + legColor(p) + '">' +
+      '<div class="card-name"><span>' + esc(p.name) + '</span><span class="gender-badge ' + gClass + '" data-gender-cycle="' + p.id + '" title="클릭하면 남 → 여 → 미정 순으로 바뀝니다">' + gLabel + '</span></div>' +
+      (meta ? '<div class="card-meta">' + esc(meta) + '</div>' : '') +
+      '</div>';
+  }
+
+  function countLabel(n, cap) {
+    if (n > cap) return '<span class="room-count over">(' + n + ', 초과' + (n - cap) + ')</span>';
+    return '<span class="room-count">' + n + '/' + cap + '</span>';
+  }
+
+  function render() {
+    $("#tab-sleep").classList.toggle("active", state.mode === "숙소");
+    $("#tab-meet").classList.toggle("active", state.mode === "미팅");
+    const pa = $("#tab-plan-a"), pb = $("#tab-plan-b"), pc = $("#tab-plan-c");
+    if (pa) pa.classList.toggle("active", state.plan === "A");
+    if (pb) pb.classList.toggle("active", state.plan === "B");
+    if (pc) pc.classList.toggle("active", state.plan === "C");
+    const vb = $("#tab-view-bldg"), vl = $("#tab-view-leg"), vf = $("#tab-view-free");
+    if (vb) vb.classList.toggle("active", state.view === "building" || !state.view);
+    if (vl) vl.classList.toggle("active", state.view === "legtree");
+    if (vf) vf.classList.toggle("active", state.view === "free");
+    $("#people-count").textContent = state.people.length + "명";
+    $("#btn-undo").disabled = history.length === 0;
+    const w = computeWarnings();
+    $("#banner").classList.toggle("visible", w.mixed);
+    renderDeck();
+    renderBoard();
+    renderTree();
+    renderRules();
+    renderStats();
+    renderWarnings(w);
+    renderRoomForm();
+    renderUplineList();
+    renderMeetList();
+    if (state.plans) state.plans[state.plan] = snapshotPlan();
+    persist();
+  }
+
+  function renderRoomForm() {
+    const meet = state.mode === "미팅";
+    $("#room-form-title").textContent = meet ? "룸미팅 방 추가" : "숙소 방 추가";
+    $("#rm-gender-wrap").classList.toggle("hidden", meet);
+    $("#rm-name").placeholder = meet ? "예: 미팅 A" : "예: 301호";
+    if (!$("#rm-cap").dataset.touched) $("#rm-cap").value = meet ? "15" : "6";
+    $("#room-form-hint").textContent = meet
+      ? "룸미팅 방은 남녀가 같이 모여도 혼숙 경고가 뜨지 않습니다. 라인 칩을 통째로 넣을 수 있습니다."
+      : "정원보다 많이 넣어도 됩니다. 초과 인원은 빨간색으로 표시됩니다.";
+  }
+
+  function renderUplineList() {
+    const names = Array.from(new Set(state.people.map((p) => p.name)));
+    $("#upline-list").innerHTML = names.map((n) => "<option value=\"" + esc(n) + "\">").join("");
+    const lineEl = $("#line-list");
+    if (lineEl) {
+      const lines = Array.from(new Set(LINE_ORDER.concat(linesList().filter((l) => l !== "라인 미지정"))));
+      lineEl.innerHTML = lines.map((n) => "<option value=\"" + esc(n) + "\">").join("");
+    }
+  }
+
+  function renderDeck() {
+    const q = deckQuery.trim();
+    const unassigned = state.people.filter((p) => placementOf(p.id).kind === "deck");
+    const shown = unassigned.filter((p) => {
+      if (deckFilter !== "all" && p.gender !== deckFilter) return false;
+      if (deckLineFilter !== "all" && displayLine(p) !== deckLineFilter) return false;
+      const hay = p.name + " " + (p.region || "") + " " + (p.uplineName || "") + " " + displayLine(p) + " " + (p.memo || "");
+      if (q && !hay.includes(q)) return false;
+      return true;
+    });
+    $("#deck-count").textContent = "미배치 " + unassigned.length + "명";
+    const sel = $("#deck-line");
+    if (sel) {
+      const cur = deckLineFilter;
+      const opts = ['<option value="all">전체 라인</option>']
+        .concat(linesList().map((l) => '<option value="' + esc(l) + '">' + esc(l) + " 라인</option>"));
+      sel.innerHTML = opts.join("");
+      sel.value = cur;
+      if (sel.value !== cur) { deckLineFilter = "all"; sel.value = "all"; }
+    }
+    const deck = $("#deck");
+    if (!shown.length) {
+      deck.innerHTML = '<div class="deck-empty">' +
+        (state.people.length ? "조건에 맞는 이름표가 없습니다. 방·대기 구역에 이미 놓였을 수 있습니다." : "참가자를 추가하거나 예시 데이터를 불러오세요.") +
+        "</div>";
+      renderDropDock(unassigned);
+      return;
+    }
+    const groups = [];
+    const map = {};
+    shown.forEach((p) => {
+      const ln = displayLine(p);
+      if (!map[ln]) { map[ln] = []; groups.push(ln); }
+      map[ln].push(p);
+    });
+    const order = linesList();
+    groups.sort((a, b) => {
+      const ia = order.indexOf(a); const ib = order.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b, "ko");
+    });
+    deck.innerHTML = '<div class="deck-groups">' + groups.map((ln) => {
+      const people = map[ln].slice().sort((a, b) => a.name.localeCompare(b.name, "ko"));
+      return '<div class="deck-group"><div class="deck-group-h"><span class="swatch" style="background:' + lineColor(ln) + '"></span>' +
+        esc(ln) + ' 라인 <span class="n">' + people.length + "명</span></div>" +
+        '<div class="cards">' + people.map((p) => cardHTML(p)).join("") + "</div></div>";
+    }).join("") + "</div>";
+    renderDropDock(unassigned);
+  }
+
+  function renderDropDock(unassigned) {
+    const dock = document.getElementById("drop-dock");
+    const cards = document.getElementById("drop-dock-cards");
+    const count = document.getElementById("drop-dock-count");
+    if (!dock || !cards || !count) return;
+    const list = unassigned || state.people.filter((p) => placementOf(p.id).kind === "deck");
+    count.textContent = list.length + "명";
+    if (!list.length) {
+      cards.innerHTML = '<div class="drop-dock-empty">모두 방에 있습니다. 이름표를 여기로 놓으면 대기로 돌아갑니다.</div>';
+      return;
+    }
+    cards.innerHTML = list.map((p) => cardHTML(p)).join("");
+  }
+
+  function renderBoard() {
+    const board = $("#board");
+    const chips = $("#line-chips");
+    if (state.view === "legtree") {
+      renderLegTree();
+      return;
+    }
+    if (state.view !== "free" && (state.buildings || []).length) {
+      renderBuildingBoard();
+      const meetBar = renderMeetChips();
+      chips.insertAdjacentHTML("afterend", "");
+      const oldBar = $("#meet-chips");
+      if (oldBar && oldBar.parentNode !== chips.parentNode) oldBar.remove();
+      const existing = chips.parentNode.querySelector("#meet-chips");
+      if (existing) existing.remove();
+      chips.insertAdjacentHTML("afterend", meetBar);
+      return;
+    }
+    board.className = "board";
+    const existing = document.querySelector("#meet-chips");
+    if (existing) existing.remove();
+    const hint = state.mode === "미팅"
+      ? "라인 칩을 미팅방에 놓으면 그 산하가 통째로 배정됩니다. 이름표를 따로 옮겨도 됩니다."
+      : "이름표를 방에 끌어 넣으세요. 방 밖 보드에는 대기처럼 자유롭게 둘 수 있습니다. 방 제목을 끌면 방 위치를 옮깁니다.";
+    chips.innerHTML = renderLineChips();
+    const rooms = state.rooms.filter((r) => r.type === (state.mode === "미팅" ? "미팅" : "숙소"));
+    const b = bucket();
+    adjustFreePositions(rooms);
+    let html = '<div class="board-hint" id="board-hint">' + hint + "</div>";
+    rooms.forEach((r) => { html += roomHTML(r); });
+    state.people.forEach((p) => {
+      if (b.free[p.id]) {
+        const pos = b.free[p.id];
+        html += '<div class="free-wrap" style="left:' + pos.x + 'px;top:' + pos.y + 'px">' + cardHTML(p) + "</div>";
+      }
+    });
+    board.innerHTML = html;
+    $$("#board > .free-wrap").forEach((wrap) => {
+      const card = wrap.querySelector(".card");
+      if (!card) return;
+      card.style.left = wrap.style.left;
+      card.style.top = wrap.style.top;
+      board.appendChild(card);
+      wrap.remove();
+    });
+    layoutRoomsIfNeeded(rooms);
+  }
+  function adjustFreePositions(rooms) {
+    const b = bucket();
+    const list = rooms || state.rooms.filter((r) => r.type === (state.mode === "미팅" ? "미팅" : "숙소"));
+    state.people.forEach((p) => {
+      const pos = b.free[p.id];
+      if (!pos) return;
+      const cw = 168, ch = 58;
+      list.forEach((r) => {
+        const rx = r.x || 0, ry = r.y || 0, rw = r.w || 250;
+        const headH = 52;
+        const overlap = pos.x < rx + rw && pos.x + cw > rx && pos.y < ry + headH && pos.y + ch > ry;
+        if (overlap) pos.y = ry + headH + 8;
+      });
+    });
+  }
+
+  function roomHTML(r) {
+    const occ = occupants(r.id);
+    const over = occ.length > r.capacity;
+    const mixed = r.type === "숙소" && roomMixed(r);
+    const nev = neverViolations(r.type === "미팅" ? "미팅" : "숙소").some((v) => v.roomId === r.id);
+    const meet = (r.meetingLines || []);
+    const cls = ["room", "gender-" + (r.gender || "미지정")];
+    if (over) cls.push("over");
+    if (mixed) cls.push("mixed");
+    if (nev) cls.push("never");
+    if (meet.length) cls.push("meet-room");
+    const genderTag = r.type === "숙소" ? (r.gender === "미지정" ? "성별 미지정" : r.gender + " 방") : "남녀 함께";
+    let flags = "";
+    if (mixed) flags += '<span class="flag mixed">남녀 혼숙</span>';
+    if (over) flags += '<span class="flag over">정원 초과</span>';
+    if (nev) flags += '<span class="flag never">절대 분리 위반</span>';
+    const wrong = new Set(r.type === "숙소" ? wrongGenderPeople(r).map((p) => p.id) : []);
+    const cards = occ.map((p) => cardHTML(p, { wrong: wrong.has(p.id) || (mixed && r.gender === "미지정") })).join("");
+    let lineSum = "";
+    if (r.type === "미팅" && occ.length) {
+      const groups = {};
+      occ.forEach((p) => {
+        const ln = displayLine(p);
+        groups[ln] = groups[ln] || { name: ln, n: 0 };
+        groups[ln].n++;
+      });
+      lineSum = '<div class="room-sub">' + Object.values(groups).map((g) => g.name + " " + g.n + "명").join(" · ") + "</div>";
+    }
+    const meetStyleFree = meet.length ? (';--meet-color:' + meetGroupColor(meet)) : "";
+    return '<div class="' + cls.join(" ") + '" data-room="' + r.id + '" style="left:' + (r.x || 40) + 'px;top:' + (r.y || 60) + 'px;width:' + (r.w || 250) + 'px' + meetStyleFree + '">' +
+      meetLegendHTML(r) +
+      '<div class="room-head" data-room-drag="' + r.id + '">' +
+        '<div style="flex:1;min-width:0"><div class="room-title">' + esc(r.name) + '</div>' +
+        '<div class="room-sub">' + esc(genderTag) + " · " + r.capacity + "인실</div>" + lineSum + "</div>" +
+        countLabel(occ.length, r.capacity) +
+        '<div class="room-actions">' +
+          '<button type="button" class="icon-btn" data-act="edit-room" data-id="' + r.id + '" title="수정">✎</button>' +
+          '<button type="button" class="icon-btn" data-act="del-room" data-id="' + r.id + '" title="삭제">✕</button>' +
+        "</div></div>" +
+      (flags ? '<div class="room-flags">' + flags + "</div>" : "") +
+      '<div class="room-body" data-room-body="' + r.id + '">' + cards + "</div></div>";
+  }
+
+  function layoutRoomsIfNeeded(rooms) {
+    let x = 36, y = 56, rowH = 0, maxW = 1280, changed = false;
+    rooms.forEach((r) => {
+      if (r.x != null && r.y != null) return;
+      const w = r.w || 250;
+      const h = 200;
+      if (x + w > maxW) { x = 36; y += rowH + 24; rowH = 0; }
+      r.x = x; r.y = y;
+      x += w + 20;
+      rowH = Math.max(rowH, h);
+      changed = true;
+    });
+    rooms.forEach((r) => {
+      const el = $('[data-room="' + r.id + '"]');
+      if (el) { el.style.left = r.x + "px"; el.style.top = r.y + "px"; }
+    });
+    if (changed) persist();
+  }
+
+  function renderLineChips() {
+    const lines = linesList();
+    if (!lines.length) return "";
+    return lines.map((ln) => {
+      const n = peopleInLine(ln).length;
+      return '<div class="line-chip" data-line-name="' + esc(ln) + '" style="border-left-color:' + lineColor(ln) + '">' +
+        esc(ln) + ' 라인 <span class="n">' + n + "명</span></div>";
+    }).join("");
+  }
+
+  function renderTree() {
+    function node(p, lineName) {
+      const kids = childrenOf(p.id).filter((c) => displayLine(c) === lineName);
+      const g = p.gender === "미정" ? "성별?" : p.gender;
+      let h = '<div class="tree-node"><div class="tree-row">' +
+        '<span class="tree-dot" style="background:' + legColor(p) + '"></span>' +
+        '<span class="tree-name">' + esc(p.name) + '</span>' +
+        '<span class="tree-g">' + g + (p.region ? " · " + esc(p.region) : "") + "</span></div>";
+      if (kids.length) h += '<div class="tree-kids">' + kids.map((c) => node(c, lineName)).join("") + "</div>";
+      h += "</div>";
+      return h;
+    }
+    const lines = linesList();
+    if (!state.people.length) {
+      $("#tree-body").innerHTML = '<div class="hint">라인이나 상위 리더를 입력하면 나무가 여기에 나타납니다.</div>';
+      return;
+    }
+    let h = '<div class="tree">';
+    lines.forEach((ln) => {
+      h += '<div class="tree-node"><div class="tree-row">' +
+        '<span class="tree-dot" style="background:' + lineColor(ln) + '"></span>' +
+        '<span class="tree-name">' + esc(ln) + ' 라인</span>' +
+        '<span class="tree-g">' + peopleInLine(ln).length + "명</span></div>";
+      const rootsL = lineRoots(ln);
+      if (rootsL.length) h += '<div class="tree-kids">' + rootsL.map((p) => node(p, ln)).join("") + "</div>";
+      h += "</div>";
+    });
+    h += "</div>";
+    $("#tree-body").innerHTML = h;
+  }
+
+  function renderRules() {
+    const okH = state.okGroups.map((g) => {
+      const names = g.ids.map((id) => (personById(id) || {}).name || "?").join(", ");
+      return '<div class="rule-item">같이 OK: ' + esc(names) +
+        '<button type="button" class="icon-btn rm" data-act="del-ok" data-id="' + g.id + '">✕</button></div>';
+    }).join("");
+    const nvH = state.neverPairs.map((g) => {
+      const a = (personById(g.a) || {}).name || "?";
+      const b = (personById(g.b) || {}).name || "?";
+      return '<div class="rule-item never">절대 분리: ' + esc(a) + " ↔ " + esc(b) +
+        '<button type="button" class="icon-btn rm" data-act="del-never" data-id="' + g.id + '">✕</button></div>';
+    }).join("");
+    $("#rules-ok").innerHTML = okH || "";
+    $("#rules-never").innerHTML = nvH || "";
+  }
+
+  function renderStats() {
+    const sleepRooms = state.rooms.filter((r) => r.type === "숙소");
+    const secured = sleepRooms.filter((r) => r.secured !== false);
+    const meetTagged = sleepRooms.filter((r) => (r.meetingLines || []).length).length;
+    const beds = secured.reduce((s, r) => s + (r.capacity || 0), 0);
+    const placed = state.people.filter((p) => state.sleep.room[p.id]).length;
+    const overflow = secured.reduce((s, r) => s + Math.max(0, occupants(r.id, "숙소").length - r.capacity), 0);
+    const men = state.people.filter((p) => p.gender === "남").length;
+    const women = state.people.filter((p) => p.gender === "여").length;
+    const unk = state.people.filter((p) => p.gender === "미정").length;
+    const eightN = secured.filter((r) => r.capacity >= 8).length;
+    const sixN = secured.filter((r) => r.capacity < 8).length;
+    $("#stats").innerHTML =
+      '<div class="stat"><b>' + men + "</b><span>남성</span></div>" +
+      '<div class="stat"><b>' + women + "</b><span>여성</span></div>" +
+      '<div class="stat"><b>' + unk + "</b><span>성별 미정</span></div>" +
+      '<div class="stat"><b>' + state.people.length + "</b><span>참가자</span></div>" +
+      '<div class="stat"><b>' + secured.length + "</b><span>확보 방 (" + eightN + "·8인 " + sixN + "·6인)</span></div>" +
+      '<div class="stat"><b>' + beds + "</b><span>확보 침대</span></div>" +
+      '<div class="stat"><b>' + placed + "</b><span>숙소 배정</span></div>" +
+      '<div class="stat"><b>' + overflow + "</b><span>초과 합계</span></div>" +
+      '<div class="stat"><b>' + meetTagged + "</b><span>룸미팅 지정 방</span></div>";
+  }
+
+  function renderWarnings(w) {
+    const box = $("#warnings");
+    if (!state.people.length && !state.rooms.length) {
+      box.innerHTML = '<div class="warn-empty">아직 배정할 내용이 없습니다.</div>';
+      return;
+    }
+    const items = w.list.filter((x) => x.level === "bad");
+    const infos = w.list.filter((x) => x.level !== "bad");
+    if (!items.length) {
+      box.innerHTML = '<div class="warn-item ok">지금 보이는 치명 경고는 없습니다.</div>' +
+        infos.map((i) => '<div class="warn-item">' + esc(i.text) + "</div>").join("");
+    } else {
+      box.innerHTML = items.map((i) => '<div class="warn-item bad">' + esc(i.text) + "</div>").join("") +
+        infos.map((i) => '<div class="warn-item">' + esc(i.text) + "</div>").join("");
+    }
+  }
+
+  function closeModal() {
+    const back = $("#modal-back");
+    back.classList.remove("show");
+    back.innerHTML = "";
+  }
+  function openModal(title, bodyHTML, buttons) {
+    const back = $("#modal-back");
+    const acts = (buttons || []).map((b, i) =>
+      '<button type="button" class="btn ' + (b.cls || "") + '" data-mi="' + i + '">' + esc(b.label) + "</button>"
+    ).join("");
+    back.innerHTML = '<div class="modal" role="dialog"><h3>' + esc(title) + "</h3>" +
+      '<div class="modal-body">' + bodyHTML + "</div>" +
+      '<div class="modal-actions">' + acts + "</div></div>";
+    back.classList.add("show");
+    back.onclick = (e) => { if (e.target === back) closeModal(); };
+    $$("[data-mi]", back).forEach((btn) => {
+      btn.onclick = () => {
+        const b = buttons[+btn.dataset.mi];
+        if (b && b.fn) b.fn();
+        else closeModal();
+      };
+    });
+  }
+  function confirmAsync(title, message) {
+    return new Promise((resolve) => {
+      openModal(title, "<p>" + esc(message) + "</p>", [
+        { label: "취소", fn: () => { closeModal(); resolve(false); } },
+        { label: "확인", cls: "btn-primary", fn: () => { closeModal(); resolve(true); } }
+      ]);
+    });
+  }
+
+  function addPerson(data, record) {
+    if (record) pushHist();
+    const p = {
+      id: data.id || uid("p_"),
+      name: data.name.trim(),
+      gender: (data.gender === "남" || data.gender === "여") ? data.gender : "미정",
+      line: normalizeLineName(data.line || ""),
+      uplineName: (data.uplineName || "").trim(),
+      uplineId: data.uplineId || null,
+      region: (data.region || "").trim(),
+      memo: (data.memo || "").trim()
+    };
+    if (!p.uplineId && p.uplineName) {
+      const u = personByName(p.uplineName);
+      if (u) p.uplineId = u.id;
+    }
+    state.people.push(p);
+    state.people.forEach((q) => {
+      if (!q.uplineId && q.uplineName === p.name && q.id !== p.id) q.uplineId = p.id;
+    });
+    return p;
+  }
+
+  function parseCSVRows(text) {
+    text = String(text || "").replace(/^\uFEFF/, "");
+    const rows = [];
+    let row = [], cell = "", i = 0, inQ = false;
+    const s = text;
+    while (i < s.length) {
+      const ch = s[i];
+      if (inQ) {
+        if (ch === '"' && s[i + 1] === '"') { cell += '"'; i += 2; continue; }
+        if (ch === '"') { inQ = false; i++; continue; }
+        cell += ch; i++; continue;
+      }
+      if (ch === '"') { inQ = true; i++; continue; }
+      if (ch === "," ) { row.push(cell); cell = ""; i++; continue; }
+      if (ch === "\n" || ch === "\r") {
+        if (ch === "\r" && s[i + 1] === "\n") i++;
+        row.push(cell); cell = "";
+        if (row.some((c) => String(c).trim() !== "")) rows.push(row);
+        row = []; i++; continue;
+      }
+      cell += ch; i++;
+    }
+    if (cell.length || row.length) {
+      row.push(cell);
+      if (row.some((c) => String(c).trim() !== "")) rows.push(row);
+    }
+    return rows;
+  }
+  function isPlaceholderToken(tok) {
+    const t = String(tok || "").trim();
+    if (!t || t === "000" || t === "미정" || t === "미확정" || t === "-" || t === "*" || t === "—") return true;
+    if (/^미정\s*\d+/.test(t)) return true;
+    if (/^미확정\s*\d*/.test(t)) return true;
+    if (/^외\s*\d+\s*인/.test(t)) return true;
+    if (/^확정\s*\d+명/.test(t)) return true;
+    if (t === "명단 미제출" || t === "미입금") return true;
+    return false;
+  }
+  function tokenizeNames(text, extraMemo) {
+    extraMemo = extraMemo || [];
+    const out = [];
+    let s = String(text || "").replace(/[,·•]/g, " ");
+    s = s.replace(/\s+/g, " ").trim();
+    if (!s) return out;
+    s = s.replace(/\s+\(/g, "(");
+    const parts = s.split(" ");
+    const merged = [];
+    for (let i = 0; i < parts.length; ) {
+      let tok = parts[i];
+      if (i + 1 < parts.length && parts[i + 1] === "내외") { merged.push(tok + " 내외"); i += 2; continue; }
+      if (/^[가-힣]$/.test(tok) && i + 1 < parts.length) {
+        const nxt = parts[i + 1];
+        const core = nxt.replace(/[\(（].*$/, "");
+        if (/^[가-힣]{1,2}$/.test(core)) { merged.push(tok + nxt); i += 2; continue; }
+      }
+      merged.push(tok); i++;
+    }
+    merged.forEach((tok) => {
+      let memo = extraMemo.slice();
+      let name = tok.trim();
+      if (isPlaceholderToken(name)) return;
+      const mq = name.match(/^(.+?)\s*[\(（]([^)）]+)[\)）]\s*$/);
+      if (mq) {
+        name = mq[1].trim();
+        const q = mq[2].trim();
+        if (q === "비숙" || q === "비숙박") memo.push("비숙박");
+        else if (q === "미정" || q === "미확정") memo.push("미확정");
+        else if (q) memo.push(q);
+      }
+      if (/내외$/.test(name)) { name = name.replace(/\s*내외$/, "").trim(); memo.push("내외"); }
+      const compact = name.replace(/\s+/g, "");
+      if (/^[가-힣]{2}$/.test(compact)) name = compact;
+      else if (/^[가-힣]+$/.test(compact) && /\s/.test(name) && compact.length <= 4) name = compact;
+      if (!name || /^[가-힣]$/.test(name) || isPlaceholderToken(name)) return;
+      out.push({ name, memo: memo.join("; ") });
+    });
+    return out;
+  }
+  function headerMap(cells) {
+    const map = {};
+    cells.forEach((c, i) => {
+      const k = String(c || "").replace(/^\uFEFF/, "").trim().toLowerCase();
+      if (/이름|성명|^name$/.test(k)) map.name = i;
+      else if (/성별|gender/.test(k)) map.gender = i;
+      else if (/^라인$|line/.test(k)) map.line = i;
+      else if (/상위|리더|upline|후원인/.test(k)) map.upline = i;
+      else if (/지역|region/.test(k)) map.region = i;
+      else if (/메모|memo|비고/.test(k)) map.memo = i;
+      else if (k === "8월" || k === "8월참가") map["8월"] = i;
+      else if (k === "9월" || k === "9월참가") map["9월"] = i;
+      else if (k === "10월" || k === "10월참가") map["10월"] = i;
+    });
+    return map;
+  }
+  function monthMarked(val) {
+    const v = String(val || "").trim().toUpperCase();
+    return v === "O" || v === "○" || v === "ㅇ" || v === "Y" || v === "1" || v === "TRUE" || v === "참가";
+  }
+  function parsePersonLine(line) {
+    const raw = line.trim();
+    if (!raw) return null;
+    const parts = raw.includes("\t") ? raw.split("\t") : raw.split(",");
+    const name = (parts[0] || "").trim();
+    const gender = parseGender(parts[1]);
+    const uplineName = (parts[2] || "").trim();
+    const region = (parts[3] || "").trim();
+    if (!name) return { error: raw };
+    return { name, gender, uplineName, region };
+  }
+  function parseNotionAndCsv(text, opts) {
+    opts = opts || {};
+    const months = opts.months || null;
+    const people = [];
+    const bad = [];
+    const raw = String(text || "").replace(/^\uFEFF/, "");
+    const firstLine = (raw.split(/\r?\n/).find((l) => l.trim()) || "");
+    const looksHeader = /이름|성명|name/i.test(firstLine) && /성별|라인|상위|gender|line/i.test(firstLine);
+
+    if (looksHeader && (firstLine.includes(",") || firstLine.includes("\t"))) {
+      const rows = firstLine.includes("\t") && !firstLine.includes(",")
+        ? raw.split(/\r?\n/).map((l) => l.split("\t"))
+        : parseCSVRows(raw);
+      if (!rows.length) return { ok: people, bad };
+      const map = headerMap(rows[0]);
+      if (map.name == null) {
+        return { ok: people, bad: rows.slice(1).map((r) => r.join(",")) };
+      }
+      const monthCols = ["8월","9월","10월"].filter((m) => map[m] != null);
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const name = String(row[map.name] || "").trim();
+        if (!name) continue;
+        if (months && monthCols.length) {
+          const hit = months.some((m) => map[m] != null && monthMarked(row[map[m]]));
+          if (!hit) continue;
+        }
+        people.push({
+          name,
+          gender: map.gender != null ? parseGender(row[map.gender]) : "미정",
+          line: map.line != null ? normalizeLineName(row[map.line]) : "",
+          uplineName: map.upline != null ? String(row[map.upline] || "").trim() : "",
+          region: map.region != null ? String(row[map.region] || "").trim() : "",
+          memo: map.memo != null ? String(row[map.memo] || "").trim() : ""
+        });
+      }
+      return { ok: people, bad };
+    }
+
+    raw.split(/\r?\n/).forEach((line) => {
+      const trimmed = line.trim();
+      if (!trimmed) return;
+      if (/^총\s*\d*명?/.test(trimmed) || /^합계/.test(trimmed)) return;
+      const pipe = trimmed.split("|").map((c) => c.trim());
+      // header row of August table
+      if (pipe.length >= 3 && /라인|^-$/.test(pipe[0]) && /남자|남/.test(pipe[1]) && /여자|여/.test(pipe[2])) return;
+      // "손영주 라인 20명 | names | notes"
+      const mLine = trimmed.match(/^(.+?)\s*라인\s*(?:\d+\s*명)?\s*\|\s*(.*)$/);
+      if (mLine) {
+        const lineName = normalizeLineName(mLine[1]);
+        const segs = mLine[2].split("|");
+        tokenizeNames(segs[0] || "").forEach((t) => {
+          people.push({ name: t.name, gender: "미정", line: lineName, memo: t.memo });
+        });
+        return;
+      }
+      // August table: 라인 | 남자들 | 여자들 | 숫자...
+      if (pipe.length >= 3) {
+        const first = pipe[0];
+        const looksNums = pipe.slice(3).some((c) => /^\d+$/.test(c) || c === "");
+        const looksLine = /\*$/.test(first) || /P\*?$/i.test(first) || /\//.test(first);
+        if (looksNums || looksLine) {
+          const lineName = normalizeLineName(first);
+          if (lineName && lineName !== "입금") {
+            tokenizeNames(pipe[1] || "").forEach((t) => {
+              people.push({ name: t.name, gender: "남", line: lineName, memo: t.memo });
+            });
+            tokenizeNames(pipe[2] || "").forEach((t) => {
+              people.push({ name: t.name, gender: "여", line: lineName, memo: t.memo });
+            });
+            return;
+          }
+        }
+      }
+      const row = parsePersonLine(trimmed);
+      if (!row) return;
+      if (row.error) bad.push(row.error);
+      else people.push(row);
+    });
+    return { ok: people, bad };
+  }
+
+  function addMany(text, opts) {
+    const parsed = parseNotionAndCsv(text, opts || {});
+    const ok = parsed.ok || [];
+    const bad = parsed.bad || [];
+    if (ok.length) {
+      if (!(opts && opts.noHist)) pushHist();
+      ok.forEach((r) => addPerson(r, false));
+    }
+    return { ok: ok.length, bad, people: ok };
+  }
+  function importRoster(text, opts) {
+    opts = opts || {};
+    const parsed = parseNotionAndCsv(text, { months: opts.months });
+    if (opts.replace) {
+      if (!opts.noHist) pushHist();
+      state.people = [];
+      state.sleep = { room: {}, free: {} };
+      state.meeting = { room: {}, free: {} };
+      state.okGroups = [];
+      state.neverPairs = [];
+      parsed.ok.forEach((r) => addPerson(r, false));
+    } else {
+      const existing = new Set(state.people.map((p) => p.name));
+      const fresh = parsed.ok.filter((r) => !existing.has(r.name));
+      if (fresh.length) {
+        if (!opts.noHist) pushHist();
+        fresh.forEach((r) => addPerson(r, false));
+      }
+      parsed.ok = fresh;
+    }
+    return { ok: parsed.ok.length, bad: parsed.bad || [], skipped: 0 };
+  }
+
+  function addRoom(data, record) {
+    if (record) pushHist();
+    const type = data.type || (state.mode === "미팅" ? "미팅" : "숙소");
+    const seq = state.roomSeq[type] || 1;
+    state.roomSeq[type] = seq + 1;
+    const defaultName = type === "미팅" ? ("미팅 " + String.fromCharCode(64 + Math.min(seq, 26))) : (300 + seq) + "호";
+    const room = {
+      id: data.id || uid("r_"),
+      type,
+      name: (data.name || "").trim() || defaultName,
+      capacity: Math.max(1, parseInt(data.capacity, 10) || (type === "미팅" ? 15 : 6)),
+      gender: type === "미팅" ? "미지정" : (data.gender || "미지정"),
+      x: data.x, y: data.y, w: data.w || (type === "미팅" ? 280 : 250),
+      buildingId: data.buildingId || null,
+      floor: data.floor || null,
+      bay: data.bay || null,
+      secured: data.secured == null ? true : !!data.secured,
+      meetingLines: data.meetingLines ? data.meetingLines.slice() : []
+    };
+    state.rooms.push(room);
+    return room;
+  }
+  function deleteRoom(id) {
+    pushHist();
+    const r = state.rooms.find((x) => x.id === id);
+    const b = r && r.type === "미팅" ? state.meeting : state.sleep;
+    Object.keys(b.room).forEach((pid) => { if (b.room[pid] === id) delete b.room[pid]; });
+    state.rooms = state.rooms.filter((x) => x.id !== id);
+  }
+
+  function roomsOf(type, gender) {
+    let list = state.rooms.filter((r) => r.type === type);
+    if (type === "숙소" && gender) {
+      list = list.filter((r) => r.gender === gender || r.gender === "미지정");
+      list.sort((a, b) => {
+        const pa = a.gender === gender ? 0 : 1;
+        const pb = b.gender === gender ? 0 : 1;
+        return pa - pb;
+      });
+    }
+    return list;
+  }
+  function pairBlocked(idsInRoom, candidateId) {
+    return state.neverPairs.some((pr) => {
+      if (pr.a === candidateId && idsInRoom.has(pr.b)) return true;
+      if (pr.b === candidateId && idsInRoom.has(pr.a)) return true;
+      return false;
+    });
+  }
+  function okPartners(pid) {
+    const s = new Set();
+    state.okGroups.forEach((g) => {
+      if (g.ids.includes(pid)) g.ids.forEach((id) => { if (id !== pid) s.add(id); });
+    });
+    return s;
+  }
+  function splitByChildLegs(peopleList) {
+    if (peopleList.length <= 1) return peopleList.map((p) => [p]);
+    const ids = new Set(peopleList.map((p) => p.id));
+    const tops = peopleList.filter((p) => {
+      const u = resolveUplineId(p);
+      return !u || !ids.has(u);
+    });
+    if (tops.length <= 1) {
+      const root = tops[0] || peopleList[0];
+      const kids = childrenOf(root.id);
+      const groups = [];
+      if (ids.has(root.id)) groups.push([root]);
+      kids.forEach((k) => {
+        const subIds = new Set(subtreeIds(k.id));
+        const g = peopleList.filter((p) => p.id !== root.id && subIds.has(p.id));
+        if (g.length) groups.push(g);
+      });
+      const used = new Set(groups.flat().map((p) => p.id));
+      const rest = peopleList.filter((p) => !used.has(p.id));
+      if (rest.length) groups.push(rest);
+      return groups.length ? groups : [peopleList];
+    }
+    return tops.map((t) => {
+      const subIds = new Set(subtreeIds(t.id));
+      return peopleList.filter((p) => subIds.has(p.id));
+    }).filter((g) => g.length);
+  }
+
+  function packIntoRooms(clusters, roomList) {
+    const slots = roomList.map((r) => ({ room: r, left: r.capacity, ids: new Set() }));
+    const leftover = [];
+    function fit(slot, items) {
+      return slot.left >= items.length && items.every((p) => !pairBlocked(slot.ids, p.id));
+    }
+    function tryPlace(list) {
+      let preferred = slots.find((s) =>
+        fit(s, list) && list.some((p) => [...okPartners(p.id)].some((id) => s.ids.has(id)))
+      );
+      if (!preferred) preferred = slots.find((s) => fit(s, list));
+      if (preferred) {
+        list.forEach((p) => { preferred.ids.add(p.id); preferred.left--; });
+        return true;
+      }
+      if (list.length <= 1) {
+        leftover.push(...list);
+        return false;
+      }
+      const parts = splitByChildLegs(list);
+      if (parts.length === 1 && parts[0].length === list.length) {
+        const item = list.slice();
+        while (item.length) {
+          const one = [item[0]];
+          const s = slots.find((sl) => fit(sl, one));
+          if (!s) { leftover.push(...item); break; }
+          s.ids.add(item[0].id); s.left--; item.shift();
+        }
+        return true;
+      }
+      parts.forEach((part) => tryPlace(part));
+      return true;
+    }
+    clusters.forEach((c) => tryPlace(c));
+    return { slots, leftover };
+  }
+
+  function genderClusters(gender) {
+    const clusters = [];
+    const seen = new Set();
+    linesList().forEach((ln) => {
+      lineRoots(ln).forEach((r) => {
+        const list = [];
+        subtreeIdsInLine(r.id, ln).forEach((id) => {
+          const p = personById(id);
+          if (p && p.gender === gender) { list.push(p); seen.add(p.id); }
+        });
+        if (list.length) clusters.push(list);
+      });
+    });
+    state.people.forEach((p) => {
+      if (p.gender === gender && !seen.has(p.id)) clusters.push([p]);
+    });
+    let changed = true;
+    while (changed) {
+      changed = false;
+      state.okGroups.forEach((g) => {
+        const members = g.ids.map(personById).filter((p) => p && p.gender === gender);
+        if (members.length < 2) return;
+        const idx = members.map((p) => clusters.findIndex((c) => c.some((x) => x.id === p.id)));
+        const unique = Array.from(new Set(idx.filter((i) => i >= 0))).sort((a, b) => a - b);
+        if (unique.length < 2) return;
+        const target = unique[0];
+        for (let i = unique.length - 1; i >= 1; i--) {
+          const src = unique[i];
+          clusters[target] = clusters[target].concat(clusters[src]);
+          clusters.splice(src, 1);
+          changed = true;
+        }
+      });
+    }
+    return clusters;
+  }
+
+  function autoAssignSleep() {
+    const maleOnly = state.rooms.filter((r) => r.type === "숙소" && r.gender === "남");
+    const femaleOnly = state.rooms.filter((r) => r.type === "숙소" && r.gender === "여");
+    const unspec = state.rooms.filter((r) => r.type === "숙소" && r.gender === "미지정");
+    clearPlacements("숙소");
+    const packedM = packIntoRooms(genderClusters("남"), maleOnly.concat(unspec));
+    packedM.slots.forEach((s) => {
+      s.ids.forEach((id) => { state.sleep.room[id] = s.room.id; });
+    });
+    const usedUnspec = new Set(packedM.slots.filter((s) => s.room.gender === "미지정" && s.ids.size).map((s) => s.room.id));
+    const femaleRooms = femaleOnly.concat(unspec.filter((r) => !usedUnspec.has(r.id)));
+    const packedF = packIntoRooms(genderClusters("여"), femaleRooms);
+    packedF.slots.forEach((s) => {
+      s.ids.forEach((id) => { state.sleep.room[id] = s.room.id; });
+    });
+  }
+
+  function autoAssignMeeting() {
+    const rooms = roomsOf("미팅");
+    clearPlacements("미팅");
+    const clusters = linesList().map((ln) => peopleInLine(ln));
+    const packed = packIntoRooms(clusters, rooms);
+    packed.slots.forEach((s) => {
+      s.ids.forEach((id) => { state.meeting.room[id] = s.room.id; });
+    });
+  }
+
+  function loadSample() {
+    state = emptyState();
+    const rows = [
+      ["김민호", "남", "", "서울"],
+      ["이준서", "남", "김민호", "서울"],
+      ["박서준", "남", "이준서", "서울"],
+      ["최유진", "여", "이준서", "수원"],
+      ["정하늘", "남", "이준서", "서울"],
+      ["한지민", "여", "김민호", "서울"],
+      ["윤서연", "여", "한지민", "인천"],
+      ["강다은", "여", "한지민", "서울"],
+      ["조민재", "남", "한지민", "서울"],
+      ["박영희", "여", "", "부산"],
+      ["신동욱", "남", "박영희", "부산"],
+      ["오세훈", "남", "신동욱", "부산"],
+      ["배지훈", "남", "신동욱", "울산"],
+      ["임수빈", "여", "신동욱", "부산"],
+      ["송하은", "여", "박영희", "부산"],
+      ["권나연", "여", "송하은", "창원"],
+      ["홍예린", "여", "송하은", "부산"],
+      ["문지호", "남", "송하은", "부산"],
+      ["정우성", "남", "", "대구"],
+      ["장민석", "남", "정우성", "대구"],
+      ["서준혁", "남", "장민석", "대구"],
+      ["황지아", "여", "장민석", "구미"],
+      ["김수아", "여", "정우성", "대구"],
+      ["노은지", "여", "김수아", "대구"],
+      ["안태양", "남", "김수아", "대구"],
+      ["유하린", "여", "김수아", "포항"],
+      ["최은정", "여", "", "광주"],
+      ["이도윤", "남", "최은정", "광주"],
+      ["백승민", "남", "이도윤", "광주"],
+      ["하준영", "남", "이도윤", "전주"],
+      ["나혜진", "여", "최은정", "광주"],
+      ["구민아", "여", "나혜진", "광주"],
+      ["신재원", "남", "나혜진", "순천"]
+    ];
+    rows.forEach((r) => addPerson({ name: r[0], gender: r[1], uplineName: r[2], region: r[3] }, false));
+    state.people.forEach((p) => { if (!lineOf(p)) p.line = topRoot(p).name || ""; });
+    [
+      { name: "301호", capacity: 6, gender: "남", x: 36, y: 70 },
+      { name: "302호", capacity: 6, gender: "남", x: 300, y: 70 },
+      { name: "303호", capacity: 4, gender: "남", x: 564, y: 70 },
+      { name: "401호", capacity: 6, gender: "여", x: 36, y: 340 },
+      { name: "402호", capacity: 6, gender: "여", x: 300, y: 340 },
+      { name: "403호", capacity: 4, gender: "여", x: 564, y: 340 },
+      { name: "501호", capacity: 6, gender: "미지정", x: 828, y: 70 }
+    ].forEach((d) => addRoom(Object.assign({ type: "숙소" }, d), false));
+    [
+      { name: "미팅 A", capacity: 12, x: 36, y: 70 },
+      { name: "미팅 B", capacity: 12, x: 340, y: 70 },
+      { name: "미팅 C", capacity: 10, x: 644, y: 70 },
+      { name: "미팅 D", capacity: 10, x: 36, y: 360 }
+    ].forEach((d) => addRoom(Object.assign({ type: "미팅" }, d), false));
+    const a = personByName("윤서연");
+    const b = personByName("권나연");
+    if (a && b) state.okGroups.push({ id: uid("g_"), ids: [a.id, b.id] });
+    const n1 = personByName("조민재");
+    const n2 = personByName("문지호");
+    if (n1 && n2) state.neverPairs.push({ id: uid("n_"), a: n1.id, b: n2.id });
+    state.mode = "숙소";
+  }
+
+  function ymd(d) {
+    const z = (n) => String(n).padStart(2, "0");
+    return d.getFullYear() + z(d.getMonth() + 1) + z(d.getDate()) + "_" + z(d.getHours()) + z(d.getMinutes());
+  }
+  function exportJSON() {
+    download("세미나_방배정_" + ymd(new Date()) + ".json", JSON.stringify(state, null, 2), "application/json;charset=utf-8");
+  }
+  function importJSONText(text) {
+    const s = JSON.parse(text);
+    if (!s || !Array.isArray(s.people)) throw new Error("형식이 올바르지 않습니다.");
+    pushHist();
+    state = normalize(s);
+    fillMissingLines();
+  }
+  function csvCell(v) {
+    const s = String(v == null ? "" : v);
+    if (/[",\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+  function csvText() {
+    const header = ["이름", "성별", "라인", "상위리더", "지역", "메모", "숙소방", "숙소지정성별", "숙소정원", "미팅방", "미팅방정원"];
+    const lines = [header.join(",")];
+    state.people.forEach((p) => {
+      const up = resolveUplineId(p);
+      const upName = up ? (personById(up) || {}).name : (p.uplineName || "");
+      const sid = state.sleep.room[p.id];
+      const mid = state.meeting.room[p.id];
+      const sr = sid ? state.rooms.find((r) => r.id === sid) : null;
+      const mr = mid ? state.rooms.find((r) => r.id === mid) : null;
+      lines.push([p.name, p.gender, lineOf(p) || "", upName || "", p.region || "", p.memo || "",
+        sr ? sr.name : "", sr ? sr.gender : "", sr ? sr.capacity : "",
+        mr ? mr.name : "", mr ? mr.capacity : ""].map(csvCell).join(","));
+    });
+    return "\uFEFF" + lines.join("\r\n");
+  }
+  function exportCSV() {
+    download("세미나_방배정_결과_" + ymd(new Date()) + ".csv", csvText(), "text/csv;charset=utf-8");
+  }
+
+  function renderPrint() {
+    const w = computeWarnings();
+    let h = "<h1 style=\"margin:0 0 8px;font-size:20px\">세미나 방배정 결과</h1>";
+    h += "<p style=\"color:#555\">숙소 " + state.rooms.filter((r) => r.type === "숙소").length + "개 · 룸미팅 " +
+      state.rooms.filter((r) => r.type === "미팅").length + "개 · 참가자 " + state.people.length + "명</p>";
+    if (w.mixed) h += "<p style=\"color:#8f1d1d;font-weight:800\">남녀 혼숙 배정이 되었습니다</p>";
+    function block(type, title) {
+      h += "<h2 style=\"margin:18px 0 8px;font-size:16px\">" + title + "</h2>";
+      const rooms = state.rooms.filter((r) => r.type === type);
+      if (!rooms.length) { h += "<p>등록된 방이 없습니다.</p>"; return; }
+      rooms.forEach((r) => {
+        const occ = occupants(r.id, type === "미팅" ? "미팅" : "숙소");
+        const mixed = type === "숙소" && roomMixed(r);
+        const over = occ.length > r.capacity;
+        const cnt = over ? ("(" + occ.length + ", 초과" + (occ.length - r.capacity) + ")") : (occ.length + "/" + r.capacity);
+        h += '<div class="print-room' + (mixed ? " mixed" : "") + '"><h3>' + esc(r.name) + " · " +
+          (type === "미팅" ? "남녀 함께" : (r.gender === "미지정" ? "성별 미지정" : r.gender + " 방")) +
+          " · " + r.capacity + "인실 · " + cnt + (mixed ? " · 남녀 혼숙" : "") + "</h3>";
+        if (!occ.length) h += "<p>빈 방</p>";
+        else h += "<p>" + occ.map((p) => esc(p.name) + " (" + p.gender + (p.region ? ", " + esc(p.region) : "") + ")").join(" · ") + "</p>";
+        h += "</div>";
+      });
+      const un = state.people.filter((p) => !(type === "미팅" ? state.meeting.room[p.id] : state.sleep.room[p.id]));
+      if (un.length) h += "<p>미배정: " + un.map((p) => esc(p.name) + " (" + p.gender + ")").join(", ") + "</p>";
+    }
+    block("숙소", "숙소 배정");
+    block("미팅", "룸미팅 배정");
+    $("#print-view").innerHTML = h;
+  }
+
+  let drag = null;
+  const HOLD_MS = 200;
+  const MOVE_START_MOUSE = 8;
+  const MOVE_CANCEL_TOUCH = 12;
+  const EDGE_PX = 56;
+
+  function pointerPos(e) {
+    if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    if (e.changedTouches && e.changedTouches[0]) return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function clearDragTimer() {
+    if (drag && drag.timer) {
+      clearTimeout(drag.timer);
+      drag.timer = 0;
+    }
+  }
+
+  function scrollWrap() {
+    return document.getElementById("board-wrap");
+  }
+
+  function initPointerDrag(fields, el, e) {
+    const pos = pointerPos(e);
+    const rect = el ? el.getBoundingClientRect() : { left: pos.x, top: pos.y };
+    const wrap = scrollWrap();
+    const isTouch = e.pointerType === "touch" || e.pointerType === "pen";
+    clearDragTimer();
+    drag = Object.assign({
+      dx: pos.x - rect.left,
+      dy: pos.y - rect.top,
+      x0: pos.x,
+      y0: pos.y,
+      ghost: null,
+      started: false,
+      pointerId: e.pointerId,
+      isTouch: !!isTouch,
+      target: el,
+      timer: 0,
+      sx: wrap ? wrap.scrollLeft : 0,
+      sy: wrap ? wrap.scrollTop : 0
+    }, fields);
+    if (isTouch) {
+      drag.timer = setTimeout(() => { if (drag && !drag.started) activateDrag(); }, HOLD_MS);
+    }
+  }
+
+  function startCardDrag(pid, e) {
+    const el = e.target.closest(".card");
+    if (!el) return;
+    initPointerDrag({ kind: "card", pid }, el, e);
+  }
+  function startLineDrag(lineName, e) {
+    const el = e.target.closest(".line-chip");
+    if (!el) return;
+    initPointerDrag({ kind: "line", lineName }, el, e);
+  }
+  function startRoomDrag(roomId, e) {
+    if (state.view !== "free") return;
+    const room = state.rooms.find((r) => r.id === roomId);
+    if (!room) return;
+    const pos = pointerPos(e);
+    const boardRect = $("#board").getBoundingClientRect();
+    const el = e.target.closest("[data-room-drag]");
+    const wrap = scrollWrap();
+    const isTouch = e.pointerType === "touch" || e.pointerType === "pen";
+    clearDragTimer();
+    drag = {
+      kind: "room",
+      roomId,
+      dx: pos.x - (boardRect.left + (room.x || 0)),
+      dy: pos.y - (boardRect.top + (room.y || 0)),
+      x0: pos.x,
+      y0: pos.y,
+      ghost: null,
+      started: false,
+      pointerId: e.pointerId,
+      isTouch: !!isTouch,
+      target: el,
+      timer: 0,
+      sx: wrap ? wrap.scrollLeft : 0,
+      sy: wrap ? wrap.scrollTop : 0
+    };
+    if (isTouch) {
+      drag.timer = setTimeout(() => { if (drag && !drag.started) activateDrag(); }, HOLD_MS);
+    }
+  }
+
+  function activateDrag() {
+    if (!drag || drag.started || drag.kind === "panscroll") return;
+    drag.started = true;
+    try { if (drag.target && drag.pointerId != null) drag.target.setPointerCapture(drag.pointerId); } catch (err) {}
+    document.body.classList.add("is-dragging");
+    if (drag.kind === "card") {
+      const p = personById(drag.pid);
+      const wrap = document.createElement("div");
+      wrap.innerHTML = cardHTML(p);
+      const card = wrap.firstChild;
+      card.classList.add("card-ghost");
+      document.body.appendChild(card);
+      drag.ghost = card;
+      const src = $('[data-id="' + drag.pid + '"]');
+      if (src) src.classList.add("dragging");
+    } else if (drag.kind === "line" || drag.kind === "meet" || drag.kind === "meetgroup") {
+      const src = drag.kind === "meetgroup"
+        ? $('[data-meet-group="' + drag.groupId + '"]')
+        : drag.kind === "meet"
+        ? $('[data-meet-line="' + drag.lineName + '"]')
+        : $('[data-line-name="' + drag.lineName + '"]');
+      if (src) {
+        src.classList.add("dragging");
+        const g = src.cloneNode(true);
+        g.classList.add("card-ghost");
+        g.style.position = "fixed";
+        document.body.appendChild(g);
+        drag.ghost = g;
+      }
+    }
+  }
+
+  function autoScrollAtEdge(pos) {
+    const wrap = scrollWrap();
+    if (!wrap) return;
+    const r = wrap.getBoundingClientRect();
+    let dx = 0, dy = 0;
+    if (pos.y < r.top + EDGE_PX) dy = -Math.max(6, Math.ceil((EDGE_PX - (pos.y - r.top)) * 0.4));
+    else if (pos.y > r.bottom - EDGE_PX) dy = Math.max(6, Math.ceil((EDGE_PX - (r.bottom - pos.y)) * 0.4));
+    if (pos.x < r.left + EDGE_PX) dx = -Math.max(6, Math.ceil((EDGE_PX - (pos.x - r.left)) * 0.4));
+    else if (pos.x > r.right - EDGE_PX) dx = Math.max(6, Math.ceil((EDGE_PX - (r.right - pos.x)) * 0.4));
+    if (dx || dy) wrap.scrollBy(dx, dy);
+  }
+
+  function moveDrag(e) {
+    if (!drag) return;
+    if (e.pointerId != null && drag.pointerId != null && e.pointerId !== drag.pointerId) return;
+    const pos = pointerPos(e);
+    if (drag.kind === "panscroll") {
+      const wrap = scrollWrap();
+      if (wrap) {
+        wrap.scrollLeft = drag.sx - (pos.x - drag.x0);
+        wrap.scrollTop = drag.sy - (pos.y - drag.y0);
+      }
+      return;
+    }
+    if (!drag.started) {
+      const dist = Math.hypot(pos.x - drag.x0, pos.y - drag.y0);
+      if (drag.isTouch) {
+        if (dist > MOVE_CANCEL_TOUCH) {
+          const wrap = scrollWrap();
+          clearDragTimer();
+          drag = { kind: "panscroll", x0: drag.x0, y0: drag.y0, sx: drag.sx, sy: drag.sy, pointerId: drag.pointerId };
+          if (wrap) {
+            wrap.scrollLeft = drag.sx - (pos.x - drag.x0);
+            wrap.scrollTop = drag.sy - (pos.y - drag.y0);
+          }
+        }
+        return;
+      }
+      if (dist < MOVE_START_MOUSE) return;
+      activateDrag();
+    }
+    if (e.cancelable) e.preventDefault();
+    autoScrollAtEdge(pos);
+    if (drag.ghost) {
+      drag.ghost.style.left = (pos.x - drag.dx) + "px";
+      drag.ghost.style.top = (pos.y - drag.dy) + "px";
+    }
+    $$(".drop-ok").forEach((n) => n.classList.remove("drop-ok"));
+    if (drag.kind === "room") {
+      if (e.cancelable) e.preventDefault();
+      const boardRect = $("#board").getBoundingClientRect();
+      const room = state.rooms.find((r) => r.id === drag.roomId);
+      if (!room) return;
+      room.x = Math.max(0, pos.x - boardRect.left - drag.dx);
+      room.y = Math.max(0, pos.y - boardRect.top - drag.dy);
+      const el = $('[data-room="' + room.id + '"]');
+      if (el) { el.style.left = room.x + "px"; el.style.top = room.y + "px"; }
+      return;
+    }
+    const under = hit(pos);
+    if (under && under.room) {
+      const el = $('[data-room="' + under.room + '"]');
+      if (el) el.classList.add("drop-ok");
+    } else if (under && under.deck) {
+      $("#deck").classList.add("drop-ok");
+    }
+    if (e.cancelable) e.preventDefault();
+  }
+
+  function hit(pos) {
+    const ghost = drag && drag.ghost;
+    if (ghost) ghost.style.visibility = "hidden";
+    const el = document.elementFromPoint(pos.x, pos.y);
+    if (ghost) ghost.style.visibility = "visible";
+    if (!el) return null;
+    const room = el.closest("[data-room]");
+    if (room) return { room: room.getAttribute("data-room") };
+    if (el.closest("#deck") || el.closest("[data-unassigned]") || el.closest(".side-left")) return { deck: true };
+    if (el.closest("#board") || el.closest("#board-wrap") || el.closest("#line-chips")) return { board: true };
+    return null;
+  }
+
+  function endDrag(e) {
+    if (!drag) return;
+    if (e && e.pointerId != null && drag.pointerId != null && e.pointerId !== drag.pointerId) return;
+    clearDragTimer();
+    document.body.classList.remove("is-dragging");
+    const pos = pointerPos(e);
+    const info = drag;
+    if (info.kind === "panscroll") { drag = null; return; }
+    if (info.ghost) info.ghost.style.visibility = "hidden";
+    const under = info.started ? hit(pos) : null;
+    if (info.ghost) info.ghost.remove();
+    $$(".dragging, .drop-ok").forEach((n) => n.classList.remove("dragging", "drop-ok"));
+    drag = null;
+    if (!info.started) return;
+    if (info.kind === "room") { persist(); return; }
+    if (info.kind === "meetgroup") {
+      if (under && under.room) {
+        pushHist();
+        if (setMeetingGroup(under.room, info.groupId, false)) render();
+      }
+      return;
+    }
+    if (info.kind === "meet") {
+      if (under && under.room) {
+        pushHist();
+        if (setMeetingLine(under.room, info.lineName, true)) render();
+      }
+      return;
+    }
+    if (info.kind === "line") {
+      if (under && under.room) {
+        const room = state.rooms.find((r) => r.id === under.room);
+        if (!room) return;
+        if (state.mode === "미팅" && state.view !== "free") {
+          pushHist();
+          if (setMeetingLine(room.id, info.lineName, true)) render();
+          return;
+        }
+        let ids = peopleInLine(info.lineName).map((p) => p.id);
+        if (state.mode === "숙소" && (room.gender === "남" || room.gender === "여")) {
+          ids = ids.filter((id) => (personById(id) || {}).gender === room.gender);
+        }
+        if (ids.length) {
+          if (room.type === "숙소" && !room.secured) room.secured = true;
+          assignManyToRoom(ids, room.id, true);
+          render();
+        }
+      }
+      return;
+    }
+    if (info.kind === "card") {
+      if (under && under.room) {
+        const room = state.rooms.find((r) => r.id === under.room);
+        if (room && room.type === "숙소" && !room.secured) room.secured = true;
+        assignToRoom(info.pid, under.room, true);
+        render();
+      } else if (under && under.deck) {
+        returnToDeck(info.pid, true);
+        render();
+      } else if (under && under.board) {
+        const boardRect = $("#board").getBoundingClientRect();
+        placeFree(info.pid, pos.x - boardRect.left - info.dx, pos.y - boardRect.top - info.dy, true);
+        render();
+      }
+    }
+  }
+
+  /* ===== v3: buildings, plans, meeting tags, November draft ===== */
+  const BAY_CAP = { 1: 8, 2: 6, 3: 6, 4: 8 };
+  const BUILDING_LETTERS = "ABCDEFGHIJKL";
+
+  function toast(msg) {
+    const el = $("#toast");
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => el.classList.remove("show"), 2400);
+  }
+
+  function snapshotPlan() {
+    const rooms = {};
+    state.rooms.forEach((r) => {
+      if (r.type !== "숙소") return;
+      rooms[r.id] = {
+        secured: !!r.secured,
+        gender: r.gender || "미지정",
+        capacity: r.capacity,
+        meetingLines: (r.meetingLines || []).slice(),
+        meetingGroup: r.meetingGroup || null,
+        meetingOptional: r.meetingOptional || null
+      };
+    });
+    return {
+      sleep: cloneState(state.sleep),
+      rooms
+    };
+  }
+
+  function applyPlanSnapshot(snap) {
+    if (!snap) return;
+    state.sleep = snap.sleep ? cloneState(snap.sleep) : { room: {}, free: {} };
+    state.rooms.forEach((r) => {
+      const m = snap.rooms && snap.rooms[r.id];
+      if (!m) {
+        if (r.type === "숙소") {
+          r.secured = false;
+          r.meetingLines = [];
+        }
+        return;
+      }
+      r.secured = !!m.secured;
+      r.gender = m.gender || r.gender;
+      if (m.capacity) r.capacity = m.capacity;
+      r.meetingLines = (m.meetingLines || []).slice();
+      r.meetingGroup = m.meetingGroup || null;
+      r.meetingOptional = m.meetingOptional || null;
+    });
+  }
+
+  function switchPlan(plan) {
+    if (plan === state.plan) return;
+    pushHist();
+    state.plans = state.plans || {};
+    state.plans[state.plan] = snapshotPlan();
+    state.plan = plan;
+    if (state.plans[plan]) applyPlanSnapshot(state.plans[plan]);
+    render();
+  }
+
+  function switchView(view) {
+    state.view = (view === "free" || view === "legtree") ? view : "building";
+    render();
+  }
+
+  function roomAt(buildingId, floor, bay) {
+    return state.rooms.find((r) => r.type === "숙소" && r.buildingId === buildingId && r.floor === floor && r.bay === bay);
+  }
+
+  function shortRoomNo(r) {
+    if (r.floor && r.bay) return String(r.floor * 100 + r.bay);
+    const m = String(r.name || "").match(/(\d{3,4})/);
+    return m ? m[1] : (r.name || "");
+  }
+
+  function fullRoomName(r) {
+    const b = state.buildings.find((x) => x.id === r.buildingId);
+    const no = shortRoomNo(r);
+    return (b ? b.name + " " : "") + no + "호";
+  }
+
+  function nextBuildingName() {
+    const used = new Set(state.buildings.map((b) => b.name));
+    for (let i = 0; i < BUILDING_LETTERS.length; i++) {
+      const n = BUILDING_LETTERS[i] + "동";
+      if (!used.has(n)) return n;
+    }
+    return "동" + (state.buildings.length + 1);
+  }
+
+  function addBuilding(name, record) {
+    if (record) pushHist();
+    const letter = (name || nextBuildingName()).charAt(0);
+    const b = { id: "bldg_" + letter, name: name || nextBuildingName() };
+    if (state.buildings.some((x) => x.id === b.id)) b.id = uid("bldg_");
+    state.buildings.push(b);
+    const letterCode = (b.name.match(/^([A-Z가-힣])/) || ["", "X"])[1];
+    for (let floor = 1; floor <= 3; floor++) {
+      for (let bay = 1; bay <= 4; bay++) {
+        const no = floor * 100 + bay;
+        const id = (letterCode.length === 1 && /[A-Z]/.test(letterCode) ? letterCode : b.id.replace(/^bldg_/, "")) + no;
+        addRoom({
+          id: state.rooms.some((r) => r.id === id) ? uid("r_") : id,
+          type: "숙소",
+          name: b.name + " " + no + "호",
+          capacity: BAY_CAP[bay],
+          gender: "미지정",
+          buildingId: b.id,
+          floor,
+          bay,
+          secured: false,
+          meetingLines: [],
+          x: 40 + (bay - 1) * 270,
+          y: 60 + (3 - floor) * 280,
+          w: 250
+        }, false);
+      }
+    }
+    return b;
+  }
+
+  function deleteBuilding(id) {
+    pushHist();
+    const rooms = state.rooms.filter((r) => r.buildingId === id);
+    rooms.forEach((r) => {
+      Object.keys(state.sleep.room).forEach((pid) => { if (state.sleep.room[pid] === r.id) delete state.sleep.room[pid]; });
+      Object.keys(state.meeting.room).forEach((pid) => { if (state.meeting.room[pid] === r.id) delete state.meeting.room[pid]; });
+    });
+    state.rooms = state.rooms.filter((r) => r.buildingId !== id);
+    state.buildings = state.buildings.filter((b) => b.id !== id);
+  }
+
+  function isEight(r) {
+    return (r.capacity || 0) >= 8 || r.bay === 1 || r.bay === 4;
+  }
+  const MEET_BORDER_COLORS = ["#1f6b55", "#1d4e7a", "#8a3d1f", "#5c2d82", "#0e6e6e", "#9a2348", "#5c5a18", "#2c4a6e"];
+  function groupsList() { return (typeof NOV_GROUPS !== "undefined" && NOV_GROUPS) ? NOV_GROUPS : []; }
+  function groupById(id) { return groupsList().find((g) => g.id === id) || null; }
+  function groupOfLine(line) {
+    return groupsList().find((g) => (g.lines || []).indexOf(line) !== -1) || null;
+  }
+  function linesOfMeetEntry(entry) {
+    if (!entry) return [];
+    if (Array.isArray(entry)) return entry.slice();
+    const g = groupById(entry);
+    return g ? g.lines.slice() : [];
+  }
+  function meetColorForRoom(r) {
+    if (r.meetingGroup) {
+      const g = groupById(r.meetingGroup);
+      if (g && g.color) return g.color;
+    }
+    return meetGroupColor(r.meetingLines || []);
+  }
+  function meetGroupColor(lines) {
+    const list = lines || [];
+    if (!list.length) return MEET_BORDER_COLORS[0];
+    const g = groupOfLine(list[0]);
+    if (g && g.color) return g.color;
+    const primary = list.slice().sort((a, b) => {
+      const ia = LINE_ORDER.indexOf(a), ib = LINE_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    })[0];
+    const idx = Math.max(0, LINE_ORDER.indexOf(primary));
+    return MEET_BORDER_COLORS[idx % MEET_BORDER_COLORS.length];
+  }
+  function meetLegendLabel(r) {
+    if (r.meetingOptional) {
+      const g = groupById(r.meetingOptional);
+      return "분할(선택) · " + (g ? g.label : r.meetingOptional);
+    }
+    if (r.meetingGroup) {
+      const g = groupById(r.meetingGroup);
+      return "룸미팅 · " + (g ? g.label : r.meetingGroup);
+    }
+    const lines = r.meetingLines || [];
+    if (!lines.length) return "룸미팅";
+    return "룸미팅 · " + lines.join(" · ");
+  }
+  function meetLegendHTML(r) {
+    const meet = r.meetingLines || [];
+    const gid = r.meetingGroup || r.meetingOptional;
+    if (!meet.length && !gid) return "";
+    const g = groupById(gid);
+    const color = meetColorForRoom(r);
+    const n = g ? (g.lines || []).reduce(function (s, ln) { return s + peopleInLine(ln).length; }, 0) : meetingPeople(meet).length;
+    const over = g && g.over20;
+    const tip = (g ? (g.note + " · ") : "") + (g ? g.label : meet.join(" · ")) + " " + n + "명" + (over ? " (20명 초과)" : "");
+    let extra = "";
+    if (over && !r.meetingOptional) extra += ' <span class="meet-over">'+ n +"명 · 20명 초과</span>";
+    if (r.meetingOptional) extra += ' <span class="meet-opt">선택</span>';
+    const cls = "meet-legend" + (r.meetingOptional ? " optional" : "") + (over && !r.meetingOptional ? " over20" : "");
+    return '<div class="' + cls + '" title="' + esc(tip) + '">' +
+      '<span class="meet-legend-text">' + esc(meetLegendLabel(r)) + "</span>" + extra +
+      '<button type="button" data-act="clear-meet" data-id="' + r.id + '" title="룸미팅 지정 해제">✕</button></div>';
+  }
+
+  function meetingPeople(lines) {
+    const set = new Set();
+    const list = [];
+    (lines || []).forEach((ln) => {
+      peopleInLine(ln).forEach((p) => {
+        if (!set.has(p.id)) { set.add(p.id); list.push(p); }
+      });
+    });
+    return list;
+  }
+
+  function meetRoomOfLine(lineName) {
+    return state.rooms.find((r) => r.type === "숙소" && r.secured && (r.meetingLines || []).includes(lineName));
+  }
+
+  function setMeetingGroup(roomId, groupId, optional) {
+    const r = state.rooms.find((x) => x.id === roomId);
+    if (!r) return false;
+    if (groupId && !isEight(r)) {
+      toast("룸미팅은 8인실에만 지정할 수 있습니다.");
+      return false;
+    }
+    if (groupId) {
+      state.rooms.forEach((o) => {
+        if (o.id === roomId) return;
+        if (!optional && o.meetingGroup === groupId) { o.meetingGroup = null; o.meetingLines = []; }
+      });
+      const g = groupById(groupId);
+      r.secured = true;
+      if (optional) {
+        r.meetingOptional = groupId;
+        r.meetingGroup = null;
+        r.meetingLines = [];
+      } else {
+        r.meetingGroup = groupId;
+        r.meetingOptional = null;
+        r.meetingLines = g ? g.lines.slice() : [];
+      }
+    } else {
+      r.meetingGroup = null;
+      r.meetingOptional = null;
+      r.meetingLines = [];
+    }
+    return true;
+  }
+  function setMeetingLine(roomId, lineName, on) {
+    const r = state.rooms.find((x) => x.id === roomId);
+    if (!r) return false;
+    if (on && !isEight(r)) {
+      toast("룸미팅은 8인실에만 지정할 수 있습니다.");
+      return false;
+    }
+    r.meetingLines = r.meetingLines || [];
+    state.rooms.forEach((o) => {
+      if (o.id !== roomId && o.meetingLines) {
+        o.meetingLines = o.meetingLines.filter((l) => l !== lineName);
+      }
+    });
+    if (on) {
+      if (!r.meetingLines.includes(lineName)) r.meetingLines.push(lineName);
+      r.secured = true;
+    } else {
+      r.meetingLines = r.meetingLines.filter((l) => l !== lineName);
+    }
+    return true;
+  }
+
+  function renderMeetChips() {
+    const groups = groupsList();
+    if (groups.length) {
+      const chips = groups.map((g) => {
+        const n = (g.lines || []).reduce(function (s, ln) { return s + peopleInLine(ln).length; }, 0);
+        const used = state.rooms.some((r) => r.meetingGroup === g.id);
+        return '<div class="meet-chip' + (used ? " used" : "") + (g.over20 ? " over20" : "") + '" data-meet-group="' + esc(g.id) + '" style="--meet-color:' + g.color + '">' +
+          esc(g.id) + " · " + esc(g.label) + ' <span class="n">' + n + "명" + (g.over20 ? " · 초과" : "") + "</span></div>";
+      }).join("");
+      return '<div class="meet-chips" id="meet-chips"><span class="meet-chip-legend">룸미팅 그룹 칩 (8인실에 놓으면 색 테두리로 표시)</span>' + chips + "</div>";
+    }
+    const lines = linesList();
+    if (!lines.length) return "";
+    const chips = lines.map((ln) => {
+      const n = peopleInLine(ln).length;
+      const used = !!meetRoomOfLine(ln);
+      return '<div class="meet-chip' + (used ? " used" : "") + '" data-meet-line="' + esc(ln) + '" style="--meet-color:' + meetGroupColor([ln]) + '">' +
+        esc(ln) + ' <span class="n">' + n + "명</span></div>";
+    }).join("");
+    return '<div class="meet-chips" id="meet-chips"><span class="meet-chip-legend">룸미팅 칩 (8인실에 놓으면 테두리로 표시)</span>' + chips + "</div>";
+  }
+
+  function renderMeetList() {
+    const box = $("#meet-list");
+    if (!box) return;
+    const rows = [];
+    state.rooms.filter((r) => r.type === "숙소" && (r.meetingLines || []).length).forEach((r) => {
+      const ppl = meetingPeople(r.meetingLines);
+      rows.push('<div class="meet-item"><b>' + esc(fullRoomName(r)) + "</b> " + r.capacity + "인실 · " +
+        (r.meetingLines || []).map((l) => l + " " + peopleInLine(l).length + "명").join(" + ") +
+        " = " + ppl.length + "명</div>");
+    });
+    const untagged = linesList().filter((ln) => !meetRoomOfLine(ln));
+    if (untagged.length) {
+      rows.push('<div class="meet-item" style="color:var(--warn)">미지정 라인: ' + untagged.map((l) => l + " " + peopleInLine(l).length + "명").join(", ") + "</div>");
+    }
+    box.innerHTML = rows.join("") || '<div class="hint">아직 지정된 룸미팅이 없습니다. 배지를 8인실에 끌어 놓으세요.</div>';
+  }
+
+  function renderMeetSummary() {
+    const rooms = state.rooms.filter((r) => r.type === "숙소" && ((r.meetingLines || []).length || r.meetingGroup || r.meetingOptional));
+    if (!rooms.length) return "";
+    let h = '<div class="meet-summary"><h3>룸미팅 지정 — 그룹당 8인실 하나 (숙박 인원과 별개). 테두리 색·라벨이 그룹 라인명입니다.</h3><table><thead><tr><th>호실</th><th>그룹</th><th>정원</th><th>라인 (남녀 합)</th><th>인원</th></tr></thead><tbody>';
+    rooms.forEach((r) => {
+      const gid = r.meetingGroup || r.meetingOptional;
+      const g = groupById(gid);
+      const lines = (g ? g.lines : r.meetingLines) || [];
+      const ppl = meetingPeople(lines);
+      const over = g && g.over20 && !r.meetingOptional;
+      const label = r.meetingOptional ? (gid + " 분할(선택)") : (gid || "—");
+      h += "<tr><td>" + esc(fullRoomName(r)) + "</td><td>" + esc(label) + (over ? " · 20명 초과" : "") + "</td><td>" + r.capacity + "인실</td><td>" +
+        esc(lines.map((l) => l + " " + peopleInLine(l).length + "명").join(" + ")) +
+        "</td><td>" + ppl.length + "명" + (over ? " (20명 초과)" : "") + "</td></tr>";
+    });
+    h += "</tbody></table></div>";
+    return h;
+  }
+
+  function buildingHTML(b) {
+    const rooms = state.rooms.filter((r) => r.buildingId === b.id && r.type === "숙소");
+    const sec = rooms.filter((r) => r.secured);
+    const beds = sec.reduce((s, r) => s + (r.capacity || 0), 0);
+    const occ = sec.reduce((s, r) => s + occupants(r.id, "숙소").length, 0);
+    let h = '<div class="bldg" data-bldg="' + b.id + '">';
+    h += '<div class="bldg-roof"><div class="bldg-name">' + esc(b.name) + "</div>";
+    h += '<div class="bldg-meta">확보 ' + sec.length + "실 · " + beds + "석 · 배정 " + occ + "명</div>";
+    h += '<button type="button" class="icon-btn" data-act="rename-bldg" data-id="' + b.id + '" title="이름 바꾸기" style="color:#fff">✎</button>';
+    h += '<button type="button" class="icon-btn" data-act="del-bldg" data-id="' + b.id + '" title="동 삭제" style="color:#fff">✕</button></div>';
+    for (let floor = 3; floor >= 1; floor--) {
+      h += '<div class="bldg-floor"><div class="floor-lab">' + floor + '층</div><div class="floor-rooms">';
+      for (let bay = 1; bay <= 4; bay++) {
+        const r = roomAt(b.id, floor, bay);
+        h += r ? roomCellHTML(r) : '<div class="room-cell empty"></div>';
+      }
+      h += "</div></div>";
+    }
+    h += "</div>";
+    return h;
+  }
+
+  function roomCellHTML(r) {
+    const occ = occupants(r.id, "숙소");
+    const over = occ.length > r.capacity;
+    const mixed = roomMixed(r);
+    const nev = neverViolations("숙소").some((v) => v.roomId === r.id);
+    const meet = (r.meetingLines || []);
+    const cls = ["room", "gender-" + (r.gender || "미지정")];
+    if (over) cls.push("over");
+    if (mixed) cls.push("mixed");
+    if (nev) cls.push("never");
+    if (!r.secured) cls.push("unsecured");
+    if (meet.length || r.meetingGroup || r.meetingOptional) cls.push("meet-room");
+    if (r.meetingOptional) cls.push("meet-optional");
+    const genderTag = r.gender === "미지정" ? "성별 미지정" : r.gender + " 방";
+    let flags = "";
+    if (mixed) flags += '<span class="flag mixed">남녀 혼숙</span>';
+    if (over) flags += '<span class="flag over">정원 초과</span>';
+    if (nev) flags += '<span class="flag never">절대 분리 위반</span>';
+    const wrong = new Set(wrongGenderPeople(r).map((p) => p.id));
+    const cards = occ.map((p) => cardHTML(p, { wrong: wrong.has(p.id) || (mixed && r.gender === "미지정") })).join("");
+    const meetStyle = (meet.length || r.meetingGroup || r.meetingOptional) ? ' style="--meet-color:' + meetColorForRoom(r) + '"' : "";
+    return '<div class="' + cls.join(" ") + '" data-room="' + r.id + '"' + meetStyle + ">" +
+      meetLegendHTML(r) +
+      '<div class="room-head">' +
+        '<div style="flex:1 1 auto;min-width:72px"><div class="room-title">' + esc(shortRoomNo(r)) + "호 · " + r.capacity + '인실</div>' +
+        '<div class="room-sub">' + esc(genderTag) + "</div></div>" +
+        (r.secured ? countLabel(occ.length, r.capacity) : '<span class="room-count">미확보</span>') +
+        '<div class="room-actions">' +
+          '<button type="button" class="secure-btn' + (r.secured ? " on" : "") + '" data-act="toggle-secure" data-id="' + r.id + '">' +
+            (r.secured ? "확보" : "미확보") + "</button>" +
+          '<button type="button" class="icon-btn" data-act="edit-room" data-id="' + r.id + '" title="수정">✎</button>' +
+        "</div></div>" +
+      (flags ? '<div class="room-flags">' + flags + "</div>" : "") +
+      '<div class="room-body" data-room-body="' + r.id + '">' +
+        (r.secured ? (cards || (occ.length ? "" : '<div class="hint" style="margin:8px auto">이름표를 놓으세요</div>')) : "") +
+      "</div></div>";
+  }
+
+
+  function renderLegTree() {
+    const chips = $("#line-chips");
+    chips.innerHTML = renderLineChips();
+    const existing = document.querySelector("#meet-chips");
+    if (existing) existing.remove();
+    chips.insertAdjacentHTML("afterend", renderMeetChips());
+    const board = $("#board");
+    board.className = "board board-legtree";
+    const groups = groupsList();
+    let h = '<div class="board-hint">룸미팅 레그도입니다. 여섯 그룹으로 묶어 두었고, 안 C 숙소·룸미팅은 이 그룹을 기준으로 붙였습니다. 20명이 넘는 그룹은 표시해 두었습니다.</div>';
+    h += '<div class="legtree" id="legtree">';
+    h += '<h2 class="legtree-title">26년 11월 1박2일 룸미팅 레그도</h2>';
+    h += '<p class="legtree-sub">이정훈 퍼스널 산하를 룸미팅 단위로 묶었습니다. 색은 건물 배치도의 호실 테두리와 같습니다.</p>';
+    h += '<div class="legtree-grid">';
+    groups.forEach((g) => {
+      const n = (g.lines || []).reduce(function (s, ln) { return s + peopleInLine(ln).length; }, 0);
+      const men = (g.lines || []).reduce(function (s, ln) { return s + peopleInLine(ln).filter((p) => p.gender === "남").length; }, 0);
+      const women = n - men;
+      const meetRoom = state.rooms.find((r) => r.meetingGroup === g.id);
+      const optRoom = state.rooms.find((r) => r.meetingOptional === g.id);
+      h += '<div class="leg-card' + (g.over20 ? " over20" : "") + '" style="--meet-color:' + g.color + '" data-group="' + g.id + '">';
+      h += '<div class="leg-card-h"><span class="leg-gid">' + esc(g.id) + '</span><span class="leg-label">' + esc(g.label) + "</span></div>";
+      h += '<div class="leg-note">' + esc(g.note) + "</div>";
+      h += '<div class="leg-count"><b>' + n + "명</b> · " + men + "남 " + women + "여";
+      if (g.over20) h += ' <span class="meet-over">20명 초과</span>';
+      h += "</div>";
+      h += '<div class="leg-lines">';
+      (g.lines || []).forEach((ln) => {
+        const ppl = peopleInLine(ln);
+        const m = ppl.filter((p) => p.gender === "남");
+        const f = ppl.filter((p) => p.gender === "여");
+        h += '<div class="leg-line"><div class="leg-line-h">' + esc(ln) + " 라인 <span>" + ppl.length + "명 (" + m.length + "남 " + f.length + "여)</span></div>";
+        h += '<div class="leg-names">남 ' + (m.length ? m.map((p) => esc(p.name)).join(" · ") : "—") + "</div>";
+        h += '<div class="leg-names">여 ' + (f.length ? f.map((p) => esc(p.name)).join(" · ") : "—") + "</div></div>";
+      });
+      h += "</div>";
+      if (meetRoom) h += '<div class="leg-meet">룸미팅 호실: ' + esc(fullRoomName(meetRoom)) + "</div>";
+      if (optRoom) h += '<div class="leg-meet opt">분할(선택): ' + esc(fullRoomName(optRoom)) + "</div>";
+      h += "</div>";
+    });
+    h += "</div></div>";
+    board.innerHTML = h;
+  }
+
+  function renderBuildingBoard() {
+    const chips = $("#line-chips");
+    chips.innerHTML = renderLineChips();
+    const board = $("#board");
+    board.className = "board board-buildings";
+    const hints = {
+      A: "안 A: 이번에 예상되는 6인실 5개 + 8인실 5개(70석) 임시 배치입니다. 정원 초과는 빨간색으로 표시됩니다. 룸미팅 칩을 8인실에 놓으면 색 테두리와 라벨로 표시됩니다.",
+      B: "안 B: 109명을 넣기 위해 방을 추가로 확보한 배치입니다. 108석이라 A304만 초과 1이 빨간색으로 표시됩니다. 이름표와 룸미팅 칩을 끌어 옮길 수 있습니다.",
+      C: "안 C: 8인실 7개 + 6인실 8개(104석). 숙소는 룸미팅 그룹(G1–G6) 단위로 붙였습니다. 109명보다 5석이 부족해 초과는 빨간색입니다. 그룹 칩을 8인실에 놓으면 색 테두리와 라인명 라벨이 붙습니다."
+    };
+    const hint = hints[state.plan] || hints.C;
+    let html = '<div class="board-hint" id="board-hint">' + hint + "</div>";
+    html += '<div class="bldgs">';
+    if (!state.buildings.length) {
+      html += '<div class="hint" style="padding:24px">동을 추가하면 3층·4호실 건물 배치도가 나타납니다.</div>';
+    } else {
+      state.buildings.forEach((b) => { html += buildingHTML(b); });
+    }
+    html += "</div>";
+    html += renderMeetSummary();
+    board.innerHTML = html;
+  }
+
+  function loadNovemberDraft(record) {
+    if (record) pushHist();
+    state = emptyState();
+    state.view = "building";
+    state.mode = "숙소";
+    state.plan = "C";
+    NOV_PEOPLE.forEach((row, i) => {
+      addPerson({
+        id: "p_" + String(i + 1).padStart(3, "0"),
+        name: row[2],
+        gender: row[3],
+        line: row[0],
+        memo: row[1]
+      }, false);
+    });
+    const a = addBuilding("A동", false);
+    const b = addBuilding("B동", false);
+    // rebuild stable ids if addBuilding used A101 etc.
+    function applySleep(map) {
+      const sleep = { room: {}, free: {} };
+      Object.keys(map).forEach((rid) => {
+        map[rid].forEach((name) => {
+          const p = personByName(name);
+          if (p) sleep.room[p.id] = rid;
+        });
+      });
+      return sleep;
+    }
+    function roomMeta(secureList, meetMap, optMap) {
+      const rooms = {};
+      state.rooms.filter((r) => r.type === "숙소").forEach((r) => {
+        const entry = meetMap && meetMap[r.id];
+        const opt = optMap && optMap[r.id];
+        const lines = linesOfMeetEntry(entry);
+        rooms[r.id] = {
+          secured: secureList.indexOf(r.id) !== -1,
+          gender: NOV_GENDER[r.id] || "미지정",
+          capacity: r.capacity,
+          meetingLines: lines,
+          meetingGroup: (typeof entry === "string") ? entry : null,
+          meetingOptional: opt || null
+        };
+      });
+      return rooms;
+    }
+    state.plans = {
+      A: { sleep: applySleep(NOV_SLEEP_A), rooms: roomMeta(NOV_SECURE_A, NOV_MEET_A) },
+      B: { sleep: applySleep(NOV_SLEEP_B), rooms: roomMeta(NOV_SECURE_B, NOV_MEET_B) },
+      C: { sleep: applySleep(NOV_SLEEP_C), rooms: roomMeta(NOV_SECURE_C, NOV_MEET_C, typeof NOV_MEET_C_OPTIONAL !== "undefined" ? NOV_MEET_C_OPTIONAL : {}) }
+    };
+    applyPlanSnapshot(state.plans.C);
+    state.plan = "C";
+  }
+
+  function startMeetDrag(lineName, e) {
+    const el = e.target.closest(".meet-chip");
+    if (!el) return;
+    initPointerDrag({ kind: "meet", lineName }, el, e);
+  }
+  function startGroupDrag(groupId, e) {
+    const el = e.target.closest(".meet-chip");
+    if (!el) return;
+    initPointerDrag({ kind: "meetgroup", groupId }, el, e);
+  }
+
+  function bindDrag() {
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("pointermove", moveDrag);
+    document.addEventListener("pointerup", endDrag);
+    document.addEventListener("pointercancel", endDrag);
+    document.addEventListener("touchmove", (e) => { if (drag && drag.started && e.cancelable) e.preventDefault(); }, { passive: false });
+  }
+  function onPointerDown(e) {
+    if (e.button != null && e.button !== 0) return;
+    if (e.target.closest("button, input, select, textarea, .modal-back, a, .btn-menu")) return;
+    if (e.target.closest("[data-gender-cycle]")) return;
+    const mchip = e.target.closest(".meet-chip");
+    if (mchip && mchip.dataset.meetGroup) {
+      startGroupDrag(mchip.dataset.meetGroup, e);
+      return;
+    }
+    if (mchip && mchip.dataset.meetLine) {
+      startMeetDrag(mchip.dataset.meetLine, e);
+      return;
+    }
+    const chip = e.target.closest(".line-chip");
+    if (chip && chip.dataset.lineName) {
+      startLineDrag(chip.dataset.lineName, e);
+      return;
+    }
+    const head = e.target.closest("[data-room-drag]");
+    if (head) {
+      startRoomDrag(head.getAttribute("data-room-drag"), e);
+      return;
+    }
+    const card = e.target.closest(".card");
+    if (card && card.dataset.id && !card.classList.contains("card-ghost")) {
+      startCardDrag(card.dataset.id, e);
+    }
+  }
+
+  function bindUI() {
+    const menuBtn = $("#btn-menu");
+    const backdrop = $("#panel-backdrop");
+    function closePanel() {
+      const side = document.querySelector(".side-left");
+      if (side) side.classList.remove("open");
+      if (backdrop) backdrop.classList.remove("show");
+    }
+    function openPanel() {
+      const side = document.querySelector(".side-left");
+      if (side) side.classList.add("open");
+      if (backdrop) backdrop.classList.add("show");
+    }
+    if (menuBtn) menuBtn.addEventListener("click", () => {
+      const side = document.querySelector(".side-left");
+      if (side && side.classList.contains("open")) closePanel();
+      else openPanel();
+    });
+    if (backdrop) backdrop.addEventListener("click", closePanel);
+    $("#in-gender").addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      addGender = b.dataset.g;
+      $$("#in-gender button").forEach((x) => x.classList.toggle("on", x === b));
+    });
+    $("#btn-add-person").addEventListener("click", () => {
+      const name = $("#in-name").value.trim();
+      if (!name) { $("#in-name").focus(); return; }
+      addPerson({
+        name,
+        gender: addGender,
+        line: ($("#in-line") || {}).value || "",
+        uplineName: $("#in-upline").value,
+        region: $("#in-region").value,
+        memo: $("#in-memo").value
+      }, true);
+      $("#in-name").value = "";
+      $("#in-memo").value = "";
+      $("#in-name").focus();
+      render();
+    });
+    $("#in-name").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); $("#btn-add-person").click(); }
+    });
+    $("#deck-filter").addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      deckFilter = b.dataset.f;
+      $$("#deck-filter button").forEach((x) => x.classList.toggle("on", x === b));
+      renderDeck();
+    });
+    $("#deck-search").addEventListener("input", () => {
+      deckQuery = $("#deck-search").value;
+      renderDeck();
+    });
+    if ($("#deck-line")) {
+      $("#deck-line").addEventListener("change", () => {
+        deckLineFilter = $("#deck-line").value || "all";
+        renderDeck();
+      });
+    }
+    $("#tab-sleep").addEventListener("click", () => { state.mode = "숙소"; $("#rm-cap").dataset.touched = ""; render(); });
+    $("#tab-meet").addEventListener("click", () => { state.mode = "미팅"; $("#rm-cap").dataset.touched = ""; render(); });
+    $("#rm-cap").addEventListener("input", () => { $("#rm-cap").dataset.touched = "1"; });
+    $("#btn-add-room").addEventListener("click", () => {
+      addRoom({
+        name: $("#rm-name").value,
+        capacity: $("#rm-cap").value,
+        gender: $("#rm-gender").value,
+        type: state.mode === "미팅" ? "미팅" : "숙소"
+      }, true);
+      $("#rm-name").value = "";
+      render();
+    });
+    $("#tab-plan-a").addEventListener("click", () => switchPlan("A"));
+    $("#tab-plan-b").addEventListener("click", () => switchPlan("B"));
+    $("#tab-plan-c").addEventListener("click", () => switchPlan("C"));
+    $("#tab-view-bldg").addEventListener("click", () => switchView("building"));
+    $("#tab-view-leg").addEventListener("click", () => switchView("legtree"));
+    $("#tab-view-free").addEventListener("click", () => switchView("free"));
+    $("#btn-add-bldg").addEventListener("click", () => {
+      addBuilding(null, true);
+      render();
+    });
+    $("#btn-nov").addEventListener("click", async () => {
+      const ok = await confirmAsync("11월 임시안 다시 불러오기", "지금 보드를 11월 1박2일 임시 배정안(안 C)으로 되돌립니다. 계속할까요?");
+      if (!ok) return;
+      loadNovemberDraft(true);
+      render();
+    });
+    $("#board-wrap").addEventListener("click", async (e) => {
+      const t = e.target.closest("[data-act]");
+      if (!t) return;
+      const act = t.getAttribute("data-act");
+      const id = t.getAttribute("data-id");
+      if (act === "toggle-secure") {
+        const r = state.rooms.find((x) => x.id === id);
+        if (!r) return;
+        pushHist();
+        r.secured = !r.secured;
+        render();
+      } else if (act === "remove-meet") {
+        pushHist();
+        setMeetingLine(id, t.getAttribute("data-line"), false);
+        render();
+      } else if (act === "clear-meet") {
+        const r = state.rooms.find((x) => x.id === id);
+        if (!r) return;
+        pushHist();
+        r.meetingGroup = null;
+        r.meetingOptional = null;
+        (r.meetingLines || []).slice().forEach((ln) => setMeetingLine(id, ln, false));
+        r.meetingLines = [];
+        render();
+      } else if (act === "rename-bldg") {
+        const b = state.buildings.find((x) => x.id === id);
+        if (!b) return;
+        const name = prompt("동 이름", b.name);
+        if (!name) return;
+        pushHist();
+        b.name = name.trim() || b.name;
+        state.rooms.forEach((r) => {
+          if (r.buildingId === b.id && r.floor && r.bay) r.name = b.name + " " + (r.floor * 100 + r.bay) + "호";
+        });
+        render();
+      } else if (act === "del-bldg") {
+        const b = state.buildings.find((x) => x.id === id);
+        const ok = await confirmAsync("동 삭제", (b ? b.name : "이 동") + "을 삭제할까요? 이 동의 배정도 함께 지워집니다.");
+        if (!ok) return;
+        deleteBuilding(id);
+        render();
+      }
+    });
+    $("#btn-undo").addEventListener("click", undo);
+    $("#btn-export-json").addEventListener("click", exportJSON);
+    $("#btn-export-csv").addEventListener("click", exportCSV);
+    $("#btn-print").addEventListener("click", () => { renderPrint(); window.print(); });
+    $("#btn-import-json").addEventListener("click", () => $("#file-json").click());
+    $("#btn-csv-in").addEventListener("click", () => $("#file-csv").click());
+    $("#btn-roster").addEventListener("click", () => $("#file-roster").click());
+    $("#file-roster").addEventListener("change", async (e) => {
+      const f = e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      const text = await f.text();
+      openRosterImport(text);
+    });
+    $("#file-json").addEventListener("change", async (e) => {
+      const f = e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      try { importJSONText(await f.text()); render(); }
+      catch (err) {
+        openModal("불러오기 실패", "<p>JSON 파일을 읽지 못했습니다. " + esc(err.message || "") + "</p>",
+          [{ label: "확인", cls: "btn-primary", fn: closeModal }]);
+      }
+    });
+    $("#file-csv").addEventListener("change", async (e) => {
+      const f = e.target.files[0];
+      e.target.value = "";
+      if (!f) return;
+      const res = addMany(await f.text());
+      render();
+      if (res.bad.length) {
+        openModal("일부 행을 건너뛰었습니다", "<p>" + res.ok + "명을 추가했습니다. 성별이 없거나 형식이 다른 행 " + res.bad.length + "개를 건너뛰었습니다.</p>",
+          [{ label: "확인", cls: "btn-primary", fn: closeModal }]);
+      }
+    });
+    $("#btn-bulk").addEventListener("click", () => {
+      openModal("명단 일괄 붙여넣기",
+        '<p class="hint">노션 형식도 됩니다. 예: 「손영주 라인 20명 | 정윤희 조성훈 ...」 또는 8월 표 「라인 | 남자들 | 여자들 | ...」. CSV는 머리글 이름,성별,라인,상위리더(순서 자유, 다른 칸은 무시)를 받습니다. 예전처럼 한 줄에 이름,성별,상위리더,지역도 됩니다. 성별이 없으면 미정으로 들어갑니다.</p>' +
+        '<textarea id="bulk-text" placeholder="손영주 라인 20명 | 정윤희 조성훈 김연주"></textarea>',
+        [
+          { label: "취소", fn: closeModal },
+          { label: "추가", cls: "btn-primary", fn: () => {
+            const text = ($("#bulk-text") || {}).value || "";
+            closeModal();
+            const res = addMany(text);
+            render();
+            if (res.bad.length) {
+              openModal("일부 행을 건너뛰었습니다", "<p>" + res.ok + "명을 추가했습니다. 건너뛴 행: " + res.bad.length + "개</p>",
+                [{ label: "확인", cls: "btn-primary", fn: closeModal }]);
+            }
+          }}
+        ]);
+    });
+    $("#btn-sample").addEventListener("click", async () => {
+      const dirty = state.people.length || state.rooms.length;
+      if (dirty) {
+        const ok = await confirmAsync("예시 데이터 불러오기", "지금 작업 내용이 예시 데이터로 덮어씌워집니다. 계속할까요?");
+        if (!ok) return;
+      }
+      if (dirty) pushHist();
+      loadSample();
+      render();
+    });
+    $("#btn-reset").addEventListener("click", async () => {
+      const ok = await confirmAsync("초기화", "참가자·방·배정을 모두 지울까요? 저장된 내용도 비워집니다.");
+      if (!ok) return;
+      pushHist();
+      state = emptyState();
+      persist();
+      render();
+    });
+    $("#btn-auto").addEventListener("click", async () => {
+      const mode = state.mode;
+      const msg = mode === "미팅"
+        ? "지금 룸미팅 배정을 모두 지우고, 라인 단위로 자동 배정할까요? 정원은 넘기지 않습니다."
+        : "지금 숙소 배정을 모두 지우고, 성별·라인 단위로 자동 배정할까요? 정원은 넘기지 않습니다.";
+      const ok = await confirmAsync("자동 배정 제안", msg);
+      if (!ok) return;
+      pushHist();
+      if (mode === "미팅") autoAssignMeeting();
+      else autoAssignSleep();
+      render();
+    });
+    $("#btn-people-list").addEventListener("click", openPeopleList);
+    $("#btn-add-ok").addEventListener("click", () => openRuleModal("ok"));
+    $("#btn-add-never").addEventListener("click", () => openRuleModal("never"));
+
+    document.addEventListener("click", (e) => {
+      const badge = e.target.closest("[data-gender-cycle]");
+      if (badge) {
+        const p = personById(badge.getAttribute("data-gender-cycle"));
+        if (!p) return;
+        e.preventDefault();
+        e.stopPropagation();
+        pushHist();
+        p.gender = p.gender === "남" ? "여" : (p.gender === "여" ? "미정" : "남");
+        render();
+        return;
+      }
+      const act = e.target.closest("[data-act]");
+      if (!act) return;
+      const a = act.dataset.act;
+      const id = act.dataset.id;
+      if (a === "del-room") {
+        const r = state.rooms.find((x) => x.id === id);
+        confirmAsync("방 삭제", "「" + (r ? r.name : "") + "」을(를) 삭제할까요? 안에 있던 이름표는 덱으로 돌아갑니다.").then((ok) => {
+          if (!ok) return;
+          deleteRoom(id);
+          render();
+        });
+      } else if (a === "edit-room") {
+        openEditRoom(id);
+      } else if (a === "del-ok") {
+        pushHist();
+        state.okGroups = state.okGroups.filter((g) => g.id !== id);
+        render();
+      } else if (a === "del-never") {
+        pushHist();
+        state.neverPairs = state.neverPairs.filter((g) => g.id !== id);
+        render();
+      }
+    });
+
+    $$(".collapse-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const body = document.getElementById(btn.dataset.target);
+        const on = body.style.display === "none";
+        body.style.display = on ? "" : "none";
+        btn.textContent = on ? "접기" : "펼치기";
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      const t = e.target;
+      const typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable);
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z" && !e.shiftKey) {
+        if (typing) return;
+        e.preventDefault();
+        undo();
+      } else if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === "y" || (e.key.toLowerCase() === "z" && e.shiftKey))) {
+        if (typing) return;
+        e.preventDefault();
+        redo();
+      }
+    });
+  }
+
+  function openRosterImport(text) {
+    const first = (String(text).replace(/^\uFEFF/, "").split(/\r?\n/).find((l) => l.trim()) || "");
+    const hasMonth = /8월|9월|10월/.test(first);
+    let body = '<p class="hint">노션에서 만든 명단 CSV를 불러옵니다. 머리글의 이름, 성별, 라인, 상위리더 칸을 읽고 나머지 칸은 무시합니다.</p>';
+    if (hasMonth) {
+      body += '<p class="hint">포함할 월을 고르세요. 고른 월에 O가 있는 사람만 들어옵니다.</p><div id="roster-months">';
+      ["8월","9월","10월"].forEach((m) => {
+        if (first.indexOf(m) >= 0) body += '<label style="display:inline-flex;align-items:center;gap:4px;margin-right:12px"><input type="checkbox" name="mon" value="' + m + '" checked> ' + m + "</label>";
+      });
+      body += "</div>";
+    }
+    body += '<div style="margin-top:10px"><label style="display:block;padding:3px 0"><input type="radio" name="rmode" value="replace"' + (state.people.length ? "" : " checked") + '> 기존 명단을 지우고 불러오기</label>';
+    body += '<label style="display:block;padding:3px 0"><input type="radio" name="rmode" value="add"' + (state.people.length ? " checked" : "") + '> 기존 명단에 추가 (같은 이름은 건너뜀)</label></div>';
+    openModal("명단 불러오기", body, [
+      { label: "취소", fn: closeModal },
+      { label: "불러오기", cls: "btn-primary", fn: () => {
+        const months = $$('#roster-months input[name="mon"]:checked').map((i) => i.value);
+        const modeEl = document.querySelector('#modal-back input[name="rmode"]:checked');
+        const replace = modeEl ? modeEl.value === "replace" : !state.people.length;
+        closeModal();
+        const res = importRoster(text, { months: hasMonth ? months : null, replace });
+        render();
+        openModal("명단 불러오기 결과", "<p>" + res.ok + "명을 불러왔습니다." + (res.bad && res.bad.length ? " 건너뛴 행 " + res.bad.length + "개." : "") + "</p>",
+          [{ label: "확인", cls: "btn-primary", fn: closeModal }]);
+      }}
+    ]);
+  }
+
+  function peopleOptions() {
+    return state.people.map((p) => {
+      const up = resolveUplineId(p);
+      const upn = up ? (personById(up) || {}).name : "";
+      return '<label style="display:block;padding:3px 0"><input type="checkbox" name="pid" value="' + p.id + '"> ' +
+        esc(p.name) + " (" + p.gender + (upn ? " · " + esc(upn) : "") + ")</label>";
+    }).join("") || "<p>먼저 참가자를 추가하세요.</p>";
+  }
+
+  function openRuleModal(kind) {
+    if (kind === "ok") {
+      openModal("같이 배정 가능 (친한 사이)",
+        "<p class=\"hint\">한 방으로 묶어도 되는 사람들을 두 명 이상 고르세요. 다른 라인이어도 됩니다.</p><div id=\"pick\">" + peopleOptions() + "</div>",
+        [
+          { label: "취소", fn: closeModal },
+          { label: "추가", cls: "btn-primary", fn: () => {
+            const ids = $$("#pick input:checked").map((i) => i.value);
+            closeModal();
+            if (ids.length < 2) return;
+            pushHist();
+            state.okGroups.push({ id: uid("g_"), ids });
+            render();
+          }}
+        ]);
+    } else {
+      openModal("절대 분리 쌍",
+        "<p class=\"hint\">같은 방에 넣으면 안 되는 두 사람을 고르세요.</p><div id=\"pick\">" + peopleOptions() + "</div>",
+        [
+          { label: "취소", fn: closeModal },
+          { label: "추가", cls: "btn-primary", fn: () => {
+            const ids = $$("#pick input:checked").map((i) => i.value);
+            closeModal();
+            if (ids.length !== 2) {
+              openModal("두 명을 선택해 주세요", "<p>절대 분리는 두 사람의 쌍으로 등록합니다.</p>",
+                [{ label: "확인", cls: "btn-primary", fn: closeModal }]);
+              return;
+            }
+            pushHist();
+            state.neverPairs.push({ id: uid("n_"), a: ids[0], b: ids[1] });
+            render();
+          }}
+        ]);
+    }
+  }
+
+  function openEditRoom(id) {
+    const r = state.rooms.find((x) => x.id === id);
+    if (!r) return;
+    const genderField = r.type === "숙소"
+      ? '<label class="field">성별 지정<select id="ed-g"><option value="미지정">미지정</option><option value="남">남</option><option value="여">여</option></select></label>'
+      : "";
+    const secField = r.type === "숙소"
+      ? '<label class="field" style="margin-top:8px"><span><input id="ed-sec" type="checkbox"' + (r.secured !== false ? " checked" : "") + '> 이번 모임에서 확보한 호실</span></label>'
+      : "";
+    openModal("방 수정",
+      '<div class="row"><label class="field">방 이름 / 호수<input id="ed-name" type="text"></label>' +
+      '<label class="field">정원 (인실)<input id="ed-cap" type="number" min="1" max="80"></label></div>' + genderField + secField,
+      [
+        { label: "취소", fn: closeModal },
+        { label: "저장", cls: "btn-primary", fn: () => {
+          pushHist();
+          r.name = $("#ed-name").value.trim() || r.name;
+          r.capacity = Math.max(1, parseInt($("#ed-cap").value, 10) || r.capacity);
+          if (r.type === "숙소") r.gender = $("#ed-g").value;
+          if ($("#ed-sec")) r.secured = $("#ed-sec").checked;
+          closeModal();
+          render();
+        }}
+      ]);
+    $("#ed-name").value = r.name;
+    $("#ed-cap").value = r.capacity;
+    if (r.type === "숙소") $("#ed-g").value = r.gender;
+  }
+
+  function openPeopleList() {
+    const rows = state.people.map((p) => {
+      const up = resolveUplineId(p);
+      const upn = up ? (personById(up) || {}).name : (p.uplineName || "");
+      return "<tr><td>" + esc(p.name) + "</td><td>" + p.gender + "</td><td>" + esc(lineOf(p)) + "</td><td>" + esc(upn) + "</td><td>" + esc(p.region || "") +
+        '</td><td><button type="button" class="btn btn-sm" data-editp="' + p.id + '">수정</button> ' +
+        '<button type="button" class="btn btn-sm btn-danger" data-delp="' + p.id + '">삭제</button></td></tr>';
+    }).join("");
+    openModal("참가자 목록",
+      '<table class="plist"><thead><tr><th>이름</th><th>성별</th><th>라인</th><th>상위 리더</th><th>지역</th><th></th></tr></thead><tbody>' +
+      (rows || "<tr><td colspan='6'>아직 없습니다.</td></tr>") + "</tbody></table>",
+      [{ label: "닫기", cls: "btn-primary", fn: closeModal }]);
+    $$("[data-editp]").forEach((b) => b.addEventListener("click", () => openEditPerson(b.dataset.editp)));
+    $$("[data-delp]").forEach((b) => b.addEventListener("click", () => {
+      const p = personById(b.dataset.delp);
+      closeModal();
+      confirmAsync("참가자 삭제", (p ? p.name : "") + " 님을 명단에서 삭제할까요?").then((ok) => {
+        if (!ok) return;
+        pushHist();
+        const id = b.dataset.delp;
+        state.people = state.people.filter((x) => x.id !== id);
+        state.people.forEach((x) => { if (x.uplineId === id) x.uplineId = null; });
+        delete state.sleep.room[id]; delete state.sleep.free[id];
+        delete state.meeting.room[id]; delete state.meeting.free[id];
+        state.okGroups.forEach((g) => { g.ids = g.ids.filter((i) => i !== id); });
+        state.okGroups = state.okGroups.filter((g) => g.ids.length >= 2);
+        state.neverPairs = state.neverPairs.filter((g) => g.a !== id && g.b !== id);
+        render();
+      });
+    }));
+  }
+
+  function openEditPerson(id) {
+    const p = personById(id);
+    if (!p) return;
+    closeModal();
+    openModal("참가자 수정",
+      '<div class="row"><label class="field">이름<input id="ep-name" type="text"></label>' +
+      '<label class="field">성별<select id="ep-g"><option>남</option><option>여</option><option>미정</option></select></label></div>' +
+      '<div class="row"><label class="field">라인<input id="ep-line" type="text" list="line-list"></label>' +
+      '<label class="field">상위 리더<input id="ep-up" type="text" list="upline-list"></label></div>' +
+      '<div class="row"><label class="field">지역<input id="ep-rg" type="text"></label>' +
+      '<label class="field">메모<input id="ep-memo" type="text"></label></div>',
+      [
+        { label: "취소", fn: closeModal },
+        { label: "저장", cls: "btn-primary", fn: () => {
+          pushHist();
+          p.name = $("#ep-name").value.trim() || p.name;
+          p.gender = $("#ep-g").value;
+          p.line = normalizeLineName($("#ep-line").value);
+          p.uplineName = $("#ep-up").value.trim();
+          p.uplineId = null;
+          if (p.uplineName) {
+            const u = personByName(p.uplineName);
+            if (u && u.id !== p.id) p.uplineId = u.id;
+          }
+          p.region = $("#ep-rg").value.trim();
+          p.memo = $("#ep-memo").value.trim();
+          closeModal();
+          render();
+        }}
+      ]);
+    $("#ep-name").value = p.name;
+    $("#ep-g").value = p.gender === "여" || p.gender === "미정" ? p.gender : "남";
+    $("#ep-line").value = p.line || "";
+    const up = resolveUplineId(p);
+    $("#ep-up").value = p.uplineName || (up && personById(up) ? personById(up).name : "") || "";
+    $("#ep-rg").value = p.region || "";
+    $("#ep-memo").value = p.memo || "";
+  }
+
+  window.__BOARD__ = {
+    getState: () => state,
+    setMode: (m) => { state.mode = m; render(); },
+    loadSample: () => { loadSample(); render(); },
+    assign: (pid, roomId) => { assignToRoom(pid, roomId, true); render(); },
+    assignByName: (name, roomName) => {
+      const p = state.people.find((x) => x.name === name);
+      const r = state.rooms.find((x) => x.name === roomName);
+      if (!p || !r) return false;
+      const prev = state.mode;
+      state.mode = r.type === "미팅" ? "미팅" : "숙소";
+      assignToRoom(p.id, r.id, true);
+      state.mode = prev;
+      render();
+      return true;
+    },
+    assignLineByName: (leaderName, roomName) => {
+      const r = state.rooms.find((x) => x.name === roomName);
+      if (!r) return false;
+      const prev = state.mode;
+      state.mode = r.type === "미팅" ? "미팅" : "숙소";
+      let lineName = leaderName;
+      if (!peopleInLine(leaderName).length) {
+        const p = personByName(leaderName);
+        if (p) lineName = displayLine(p);
+      }
+      let ids = peopleInLine(lineName).map((x) => x.id);
+      if (!ids.length) {
+        const p = personByName(leaderName);
+        if (p) ids = subtreeIds(p.id);
+      }
+      if (state.mode === "숙소" && (r.gender === "남" || r.gender === "여")) {
+        ids = ids.filter((id) => (personById(id) || {}).gender === r.gender);
+      }
+      if (ids.length) assignManyToRoom(ids, r.id, true);
+      state.mode = prev;
+      render();
+      return !!ids.length;
+    },
+    addMany: (text) => { const res = addMany(text); render(); return res; },
+    importRoster: (text, opts) => { const res = importRoster(text, opts || {}); render(); return res; },
+    cycleGender: (name) => {
+      const p = personByName(name);
+      if (!p) return null;
+      pushHist();
+      p.gender = p.gender === "남" ? "여" : (p.gender === "여" ? "미정" : "남");
+      render();
+      return p.gender;
+    },
+    placeFreeByName: (name, x, y) => {
+      const p = personByName(name);
+      if (!p) return false;
+      placeFree(p.id, x, y, true);
+      render();
+      return state.sleep.free[p.id] || state.meeting.free[p.id] || null;
+    },
+    addRoom: (data) => { const r = addRoom(data, true); render(); return r; },
+    autoSleep: () => { pushHist(); autoAssignSleep(); render(); },
+    autoMeet: () => { pushHist(); autoAssignMeeting(); render(); },
+    warnings: () => computeWarnings(),
+    csv: csvText,
+    person: personByName,
+    occupants: (name) => {
+      const r = state.rooms.find((x) => x.name === name);
+      return r ? occupants(r.id, r.type === "미팅" ? "미팅" : "숙소").map((p) => p.name) : [];
+    },
+    roomEl: (name) => {
+      const r = state.rooms.find((x) => x.name === name);
+      return r ? document.querySelector('[data-room="' + r.id + '"]') : null;
+    },
+    render,
+    persist,
+    loadNovemberDraft: () => { loadNovemberDraft(false); render(); },
+    switchPlan,
+    switchView,
+    fullRoomName,
+    snapshotPlan
+  };
+
+  bindUI();
+  bindDrag();
+  (async function boot() {
+    await loadPersisted();
+    if (!state.people.length) loadNovemberDraft(false);
+    render();
+  })();
+})();
+</script>
+</body>
+</html>
